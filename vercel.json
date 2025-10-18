@@ -1,23 +1,14 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/$1",
+      "source": "/",
+      "destination": "/card",
       "has": [
         {
           "type": "host",
           "value": "card.yihaodong.me"
         }
       ]
-    }
-  ],
-  "routes": [
-    {
-      "src": "^/$",
-      "dest": "/card",
-      "headers": {
-        "host": "card.yihaodong.me"
-      }
     }
   ]
 }
