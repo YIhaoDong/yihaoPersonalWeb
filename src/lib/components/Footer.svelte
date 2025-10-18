@@ -46,22 +46,25 @@
 			<!-- Contact & Social -->
 			<div>
 				<h3 class="text-white text-lg font-bold mb-4">Connect</h3>
-				<div class="flex space-x-4 mb-4">
+				<ul class="space-y-2 mb-4">
 					{#each socialLinks as social}
-						<a
-							href={social.href}
-							class="hover:text-blue-400 transition-colors"
-							aria-label={social.name}
-							title={social.name}
-						>
-							<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-								<path d={social.icon} />
-							</svg>
-						</a>
+						<li>
+							<a
+								href={social.href}
+								class="text-sm hover:text-blue-400 transition-colors"
+								target={social.name === 'Email' ? '_self' : '_blank'}
+								rel={social.name === 'Email' ? '' : 'noopener noreferrer'}
+							>
+								{social.name}
+							</a>
+						</li>
 					{/each}
+				</ul>
+				<div class="text-sm mt-6">
+					<p>School of Computer Science</p>
+					<p>University of Sydney</p>
+					<p>1 Cleveland St Sydney NSW 2008</p>
 				</div>
-				<p class="text-sm">yihao.dong@sydney.edu.au</p>
-				<p class="text-sm">Sydney, NSW 2000</p>
 			</div>
 		</div>
 
