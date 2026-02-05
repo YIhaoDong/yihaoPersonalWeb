@@ -18,12 +18,21 @@
 
 	function generateBibtex(pub: typeof publications[0]): string {
 		const id = pub.authors.split(',')[0].split(' ').pop() + pub.year;
-		const type = pub.type === 'conference' ? 'inproceedings' : 'article';
+		let type = 'article';
+		let venueField = 'journal';
+
+		if (pub.type === 'conference') {
+			type = 'inproceedings';
+			venueField = 'booktitle';
+		} else if (pub.type === 'preprint') {
+			type = 'article';
+			venueField = 'journal';
+		}
 
 		return `@${type}{${id},
   title={${pub.title}},
   author={${pub.authors}},
-  booktitle={${pub.venue}},
+  ${venueField}={${pub.venue}},
   year={${pub.year}},
   pages={${pub.pages}},
   doi={${pub.doi}}
@@ -69,9 +78,27 @@
 		<h1 class="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-4">
 			Publications
 		</h1>
-		<p class="text-xl text-gray-600 text-center max-w-3xl mx-auto">
+		<p class="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-8">
 			Peer-reviewed research in top HCI venues
 		</p>
+		<div class="flex justify-center gap-6">
+			<a href="https://scholar.google.com/citations?user=y9KUBZAAAAAJ" target="_blank" class="flex flex-col items-center group">
+				<div class="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center mb-2 group-hover:bg-blue-50 transition-colors">
+					<svg class="w-6 h-6 text-gray-700 group-hover:text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+						<path d="M5.242 13.769L0.5 9.5 12 0l11.5 9.5-4.742 4.269C17.547 12.688 14.881 12 12 12s-5.547 0.688-6.758 1.769zm6.758 8.231c-3.134 0-5.673-1.638-6.621-3.957C4.614 17.541 4 17.026 4 16.5c0-0.276 0.224-0.5 0.5-0.5s0.5 0.224 0.5 0.5c0 0.203 0.354 0.519 0.941 0.778C7.152 18.257 9.423 19 12 19s4.848-0.743 6.059-1.222C19.146 17.519 19.5 17.203 19.5 17c0-0.276 0.224-0.5 0.5-0.5s0.5 0.224 0.5 0.5c0 0.526-0.614 1.041-1.379 1.543-0.948 2.319-3.487 3.957-6.621 3.957z" />
+					</svg>
+				</div>
+				<span class="text-xs font-semibold text-gray-600 group-hover:text-blue-600">Google Scholar</span>
+			</a>
+			<a href="https://orcid.org/0009-0009-0719-3670" target="_blank" class="flex flex-col items-center group">
+				<div class="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center mb-2 group-hover:bg-blue-50 transition-colors">
+					<svg class="w-6 h-6 text-gray-700 group-hover:text-green-600" fill="currentColor" viewBox="0 0 24 24">
+						<path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 18.378H5.855V6.666h1.514v11.712zm-0.757-12.72c-0.528 0-0.957-0.429-0.957-0.957s0.429-0.957 0.957-0.957 0.957 0.429 0.957 0.957-0.429 0.957-0.957 0.957zm10.514 12.72h-1.514v-4.53c0-1.136-0.407-1.91-1.425-1.91-0.777 0-1.24 0.523-1.444 1.029-0.075 0.181-0.094 0.434-0.094 0.686v3.725h-1.514s0.02-10.612 0-11.712h1.514v1.658c0.201-0.311 0.563-0.753 1.365-0.753 0.996 0 1.742 0.65 1.742 2.048v8.759z" />
+					</svg>
+				</div>
+				<span class="text-xs font-semibold text-gray-600 group-hover:text-green-600">ORCID</span>
+			</a>
+		</div>
 	</div>
 </section>
 
@@ -165,13 +192,28 @@
 									href="https://doi.org/{pub.doi}"
 									target="_blank"
 									rel="noopener noreferrer"
-									class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+									class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm"
 								>
-									<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
 									</svg>
 									View Paper
 								</a>
+
+								<!-- ArXiv Button (for preprints) -->
+								{#if pub.type === 'preprint'}
+									<a
+										href="https://arxiv.org/abs/{pub.doi.split('/').pop()}"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="inline-flex items-center px-4 py-2 bg-red-50 text-red-700 border border-red-200 rounded-lg hover:bg-red-100 transition-colors font-medium text-sm"
+									>
+										<span class="mr-1.5 font-bold">arXiv</span>
+										<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+										</svg>
+									</a>
+								{/if}
 
 								<!-- BibTeX Button Group -->
 								<div class="inline-flex rounded-lg border border-gray-300 overflow-hidden">
@@ -190,7 +232,7 @@
 											<svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
 											</svg>
-											<span class="text-sm">BibTex</span>
+											<span class="text-sm font-bold">BibTex</span>
 										{/if}
 									</button>
 
@@ -208,19 +250,19 @@
 								</div>
 
 								<!-- First Author Badge -->
-								<!-- {#if pub.isFirstAuthor}
-									<span class="inline-flex items-center px-3 py-1 bg-green-50 text-green-700 rounded-full text-sm font-semibold border border-green-200">
-										<svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+								{#if pub.isFirstAuthor}
+									<span class="inline-flex items-center px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-xs font-bold border border-amber-200">
+										<svg class="w-3 h-3 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
+											<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
 										</svg>
 										First Author
 									</span>
-								{/if} -->
+								{/if}
 
-								<!-- Conference Badge -->
-								<!-- <span class="inline-flex items-center px-3 py-1 bg-purple-50 text-purple-700 rounded-full text-sm font-semibold border border-purple-200 capitalize">
+								<!-- Type Badge -->
+								<span class="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold border border-gray-200 capitalize">
 									{pub.type}
-								</span> -->
+								</span>
 							</div>
 						</div>
 					</div>

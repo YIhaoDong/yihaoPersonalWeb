@@ -7,7 +7,6 @@
 		{ href: '/research', label: 'Research' },
 		{ href: '/publications', label: 'Publications' },
 		{ href: '/teaching', label: 'Teaching' },
-		// { href: '/projects', label: 'Projects' },
 		{ href: '/contact', label: 'Contact' }
 	];
 

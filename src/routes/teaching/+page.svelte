@@ -1,14 +1,31 @@
 <script lang="ts">
 	import { courses } from '$lib/data/courses';
 
-	// Group courses by role
+	// Group courses by role, then by code
 	const coursesByRole = courses.reduce((acc, course) => {
 		if (!acc[course.role]) {
-			acc[course.role] = [];
+			acc[course.role] = {};
 		}
-		acc[course.role].push(course);
+		const key = `${course.code}-${course.role}`;
+		if (!acc[course.role][key]) {
+			acc[course.role][key] = {
+				...course,
+				semesters: []
+			};
+		}
+		acc[course.role][key].semesters.push(`${course.semester} ${course.year}`);
 		return acc;
-	}, {} as Record<string, typeof courses>);
+	}, {} as Record<string, Record<string, any>>);
+
+	// Convert to array and sort semesters
+	Object.keys(coursesByRole).forEach(role => {
+		coursesByRole[role] = Object.values(coursesByRole[role]).map(c => ({
+			...c,
+			semestersDisplay: c.semesters.join(', ')
+		}));
+	});
+
+	const uniqueCoursesCount = new Set(courses.map(c => c.code)).size;
 
 	const responsibilities = [
 		'Conducted tutorial sessions for various classes, both with and without specific guidelines or instructions',
@@ -43,20 +60,30 @@
 <!-- Overview -->
 <section class="section-container">
 	<div class="max-w-4xl mx-auto">
-		<div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-lg mb-12">
-			<h2 class="text-2xl font-bold text-gray-900 mb-3">Teaching Philosophy</h2>
-			<p class="text-gray-700 leading-relaxed">
-				{teachingPhilosophy}
-			</p>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+			<div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-lg shadow-sm">
+				<h2 class="text-2xl font-bold text-gray-900 mb-3">Teaching Philosophy</h2>
+				<p class="text-gray-700 leading-relaxed text-sm">
+					{teachingPhilosophy}
+				</p>
+			</div>
+			<div class="bg-purple-50 border-l-4 border-purple-600 p-6 rounded-lg shadow-sm">
+				<h2 class="text-2xl font-bold text-gray-900 mb-3">Pedagogical Innovation</h2>
+				<p class="text-gray-700 leading-relaxed text-sm">
+					I integrate <strong>Extended Reality (XR)</strong> demonstrations into my HCI teaching (e.g., INFO3315) to help students 
+					grasp complex spatial interaction concepts. By bridging theoretical models with immersive experiences, 
+					I foster deeper engagement and practical understanding of usability principles.
+				</p>
+			</div>
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 			<div class="bg-white rounded-lg shadow-md p-6">
 				<div class="text-4xl font-bold text-blue-600 mb-2">
-					{courses.length}
+					{uniqueCoursesCount}
 				</div>
 				<div class="text-gray-600 font-medium">
-					Courses Taught
+					Unique Courses
 				</div>
 			</div>
 			<div class="bg-white rounded-lg shadow-md p-6">
@@ -65,6 +92,14 @@
 				</div>
 				<div class="text-gray-600 font-medium">
 					Teaching Experience
+				</div>
+			</div>
+			<div class="bg-white rounded-lg shadow-md p-6">
+				<div class="text-4xl font-bold text-purple-600 mb-2">
+					4+ 
+				</div>
+				<div class="text-gray-600 font-medium">
+					Students Mentored
 				</div>
 			</div>
 		</div>
@@ -87,25 +122,76 @@
 
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 						{#each roleCourses as course}
-							<div class="card hover:shadow-xl transition-shadow duration-300">
+							<a
+								href="https://www.sydney.edu.au/units/{course.code}"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="card hover:shadow-xl transition-shadow duration-300 group block"
+							>
 								<div class="flex items-start justify-between mb-3">
-									<div>
-										<h4 class="text-xl font-bold text-gray-900 mb-1">
-											{course.code}
-										</h4>
-										<p class="text-gray-700 font-medium">
+									<div class="flex-1">
+										<div class="flex items-center justify-between mb-1">
+											<h4 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+												{course.code}
+											</h4>
+											<svg class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+											</svg>
+										</div>
+										<p class="text-gray-700 font-medium mb-2">
 											{course.name}
 										</p>
+										<div class="flex flex-wrap gap-2">
+											{#each course.semesters as sem}
+												<span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap">
+													{sem}
+												</span>
+											{/each}
+										</div>
 									</div>
-									<span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium whitespace-nowrap ml-2">
-										{course.semester} {course.year}
-									</span>
 								</div>
-							</div>
+							</a>
 						{/each}
 					</div>
 				</div>
 			{/each}
+		</div>
+	</div>
+</section>
+
+<!-- Mentoring -->
+<section class="section-container">
+	<div class="max-w-4xl mx-auto">
+		<h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Mentoring & Supervision</h2>
+		<div class="bg-white rounded-xl shadow-md p-8 border-l-4 border-green-500">
+			<p class="text-gray-700 mb-6 leading-relaxed">
+				Beyond formal teaching, I am committed to mentoring junior researchers and undergraduate students. 
+				I have experience guiding students through the research process, from literature review to prototyping and evaluation.
+			</p>
+			<div class="grid md:grid-cols-2 gap-8">
+				<div class="flex items-start gap-4">
+					<div class="bg-green-100 p-2 rounded-lg flex-shrink-0">
+						<svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+						</svg>
+					</div>
+					<div>
+						<p class="font-bold text-gray-900">Honours Project Mentoring</p>
+						<p class="text-gray-600 text-sm">Assisting Honours students in the CREATION Lab with VR prototyping and experimental design.</p>
+					</div>
+				</div>
+				<div class="flex items-start gap-4">
+					<div class="bg-green-100 p-2 rounded-lg flex-shrink-0">
+						<svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+						</svg>
+					</div>
+					<div>
+						<p class="font-bold text-gray-900">Undergraduate Research</p>
+						<p class="text-gray-600 text-sm">Supervising students on data collection and user study execution for XR research projects.</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -149,8 +235,18 @@
 						return b.semester.localeCompare(a.semester);
 					}) as course, index}
 						<tr class="{index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-blue-50 transition-colors">
-							<td class="px-6 py-4 font-mono text-blue-600 font-semibold">
-								{course.code}
+							<td class="px-6 py-4 font-mono">
+								<a
+									href="https://www.sydney.edu.au/units/{course.code}"
+									target="_blank"
+									rel="noopener noreferrer"
+									class="text-blue-600 font-semibold hover:underline flex items-center gap-1"
+								>
+									{course.code}
+									<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+									</svg>
+								</a>
 							</td>
 							<td class="px-6 py-4 text-gray-900">
 								{course.name}

@@ -70,7 +70,7 @@
 
 		<div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
 			<p>&copy; {currentYear} Yihao Dong. All rights reserved.</p>
-			<p class="mt-2 text-gray-500">Last updated: October 2025</p>
+			<p class="mt-2 text-gray-500">Last updated: February 2026</p>
 		</div>
 	</div>
 </footer>

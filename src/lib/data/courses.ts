@@ -8,11 +8,11 @@ export interface Course {
 
 export const courses: Course[] = [
 	{
-		code: 'COMP5427',
-		name: 'Usability Engineering',
-		semester: 'S1',
+		code: 'INFO4999',
+		name: 'Computer Science Honours',
+		semester: 'S2',
 		year: 2025,
-		role: 'Teaching Assistant'
+		role: 'Honours Project Examiner'
 	},
 	{
 		code: 'INFO4999',
@@ -20,6 +20,27 @@ export const courses: Course[] = [
 		semester: 'S2',
 		year: 2024,
 		role: 'Honours Project Examiner'
+	},
+	{
+		code: 'COMP5427',
+		name: 'Usability Engineering',
+		semester: 'S1',
+		year: 2025,
+		role: 'Teaching Assistant'
+	},
+	{
+		code: 'INFO3315',
+		name: 'Human-Computer Interaction',
+		semester: 'S2',
+		year: 2025,
+		role: 'Teaching Assistant'
+	},
+	{
+		code: 'INFO3315',
+		name: 'Human-Computer Interaction',
+		semester: 'S1',
+		year: 2025,
+		role: 'Tutor'
 	},
 	{
 		code: 'ISYS2120',

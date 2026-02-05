@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { researchInterests } from '$lib/data/skills';
+	import tactDeformImg from '$lib/assets/research/TactDeform.png';
+	import justBeforeTouchImg from '$lib/assets/research/Ahs-JustBeforeTouch.png';
 
 	const researchAreas = [
 		{
@@ -56,6 +58,55 @@
 		<p class="text-xl text-gray-600 text-center max-w-3xl mx-auto">
 			Advancing Human-Computer Interaction through innovative Extended Reality technologies
 		</p>
+	</div>
+</section>
+
+<!-- Research Vision -->
+<section class="section-container pb-0">
+	<div class="max-w-4xl mx-auto text-center">
+		<blockquote class="text-2xl md:text-3xl font-serif italic text-blue-800 leading-relaxed mb-8">
+			"I aim to eliminate the boundary between virtual and physical touch by leveraging 
+			anticipatory algorithms and proactive multisensory feedback."
+		</blockquote>
+		<div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+	</div>
+</section>
+
+<!-- Featured Projects -->
+<section class="section-container">
+	<div class="max-w-6xl mx-auto">
+		<h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Featured Research Projects</h2>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+			<!-- Project 1 -->
+			<div class="group">
+				<div class="relative overflow-hidden rounded-2xl shadow-lg mb-6 bg-gray-100 aspect-video flex items-center justify-center border border-gray-100">
+					<img src={tactDeformImg} alt="TactDeform System" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+					<div class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+						CHI '26
+					</div>
+				</div>
+				<h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">TactDeform</h3>
+				<p class="text-gray-700 leading-relaxed mb-4">
+					Finger pad deformation inspired spatial tactile feedback for virtual geometry exploration. 
+					A system that mimics the natural deformation of the finger pad to provide high-fidelity haptic sensations.
+				</p>
+			</div>
+
+			<!-- Project 2 -->
+			<div class="group">
+				<div class="relative overflow-hidden rounded-2xl shadow-lg mb-6 bg-gray-100 aspect-video flex items-center justify-center border border-gray-100">
+					<img src={justBeforeTouchImg} alt="Just Before Touch System" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+					<div class="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+						AHs '25
+					</div>
+				</div>
+				<h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Just Before Touch</h3>
+				<p class="text-gray-700 leading-relaxed mb-4">
+					Manipulating perceived haptic sensations through proactive vibrotactile cues. 
+					Using anticipatory feedback to "prime" the user's nervous system before actual physical contact.
+				</p>
+			</div>
+		</div>
 	</div>
 </section>
 

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import profileImg from '$lib/assets/card_profileImage.jpeg';
+
 	function generateVCard(): string {
 		const vCard = `BEGIN:VCARD
 VERSION:3.0
@@ -48,13 +50,63 @@ END:VCARD`;
 			<!-- Contact Preview Card -->
 			<div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
 				<!-- Profile Header -->
-				<div class="bg-gradient-to-br from-blue-600 to-blue-700 px-8 py-12 text-center">
-					<div class="w-32 h-32 mx-auto mb-6 bg-white rounded-full flex items-center justify-center text-5xl font-bold text-blue-600">
-						YD
+				<div class="bg-gradient-to-br from-blue-600 to-blue-700 px-8 py-10 text-center relative">
+					<div class="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden shadow-xl border-4 border-white bg-white">
+						<img src={profileImg} alt="Yihao Dong" class="w-full h-full object-cover" />
 					</div>
-					<h1 class="text-3xl font-bold text-white mb-2">Yihao Dong</h1>
-					<p class="text-blue-100 text-lg">PhD Candidate in Human-Computer Interaction</p>
-					<p class="text-blue-100 mt-1">University of Sydney</p>
+					<h1 class="text-3xl font-bold text-white mb-1">Yihao Dong</h1>
+					<p class="text-blue-100 text-sm font-medium">PhD Candidate @ University of Sydney</p>
+					
+					<div class="mt-6 flex flex-col gap-3 max-w-xs mx-auto">
+						<a href="/" class="w-full bg-white text-blue-600 px-4 py-3 rounded-full text-sm font-bold shadow-md hover:bg-blue-50 transition-all flex items-center justify-center gap-2">
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+							</svg>
+							Visit My Full Website
+						</a>
+						<a 
+							href="https://www.linkedin.com/in/yihao-dong/" 
+							target="_blank" 
+							rel="noopener noreferrer"
+							class="w-full bg-[#0077b5] text-white px-4 py-3 rounded-full text-sm font-bold shadow-md hover:bg-[#006396] transition-all flex items-center justify-center gap-2"
+						>
+							<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+							</svg>
+							Connect on LinkedIn
+						</a>
+					</div>
+				</div>
+
+				<!-- Explore Section -->
+				<div class="px-8 pt-8 pb-6 border-b border-gray-100">
+					<h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4 text-center">Explore My Work</h3>
+					<div class="grid grid-cols-3 gap-3">
+						<a href="/research" class="flex flex-col items-center p-3 rounded-xl bg-blue-50 hover:bg-blue-100 transition-colors group">
+							<div class="w-10 h-10 bg-white rounded-lg shadow-sm flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+								<svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.691.34a2 2 0 01-1.783 0l-.691-.34a6 6 0 00-3.86-.517l-2.387.477a2 2 0 00-1.022.547l-1.16 1.16a2 2 0 000 2.828l1.16 1.16a2 2 0 001.022.547l2.387.477a6 6 0 003.86-.517l.691-.34a2 2 0 011.783 0l.691.34a6 6 0 003.86.517l2.387-.477a2 2 0 001.022-.547l1.16-1.16a2 2 0 000-2.828l-1.16-1.16z" />
+								</svg>
+							</div>
+							<span class="text-[10px] font-bold text-blue-700 uppercase tracking-tight">Research</span>
+						</a>
+						<a href="/publications" class="flex flex-col items-center p-3 rounded-xl bg-indigo-50 hover:bg-indigo-100 transition-colors group">
+							<div class="w-10 h-10 bg-white rounded-lg shadow-sm flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+								<svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+								</svg>
+							</div>
+							<span class="text-[10px] font-bold text-indigo-700 uppercase tracking-tight">Papers</span>
+						</a>
+						<a href="/teaching" class="flex flex-col items-center p-3 rounded-xl bg-green-50 hover:bg-green-100 transition-colors group">
+							<div class="w-10 h-10 bg-white rounded-lg shadow-sm flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+								<svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+								</svg>
+							</div>
+							<span class="text-[10px] font-bold text-green-700 uppercase tracking-tight">Teaching</span>
+						</a>
+					</div>
 				</div>
 
 				<!-- Contact Information -->

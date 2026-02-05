@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { researchInterests } from '$lib/data/skills';
 	import { publications } from '$lib/data/publications';
+	import profileImg from '$lib/assets/home_profileImage.jpeg';
 </script>
 
 <svelte:head>
@@ -11,30 +12,65 @@
 <!-- Hero Section -->
 <section class="bg-gradient-to-br from-blue-50 to-white py-20 md:py-32">
 	<div class="section-container">
-		<div class="max-w-4xl mx-auto text-center">
-			<h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-				Yihao Dong
-			</h1>
-			<p class="text-2xl md:text-3xl text-blue-600 font-semibold mb-4">
-				PhD Candidate in Human-Computer Interaction
-			</p>
-			<p class="text-xl text-gray-700 mb-8">
-				The University of Sydney
-			</p>
-			<p class="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
-				Enhancing User Experience in Extended Reality through Predictive Hand Gesture Tracking
-			</p>
+		<div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+			<!-- Profile Image -->
+			<div class="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden flex-shrink-0 shadow-xl border-4 border-white rotate-3 hover:rotate-0 transition-transform duration-500 bg-gray-100">
+				<img src={profileImg} alt="Yihao Dong" class="w-full h-full object-cover" />
+			</div>
 
-			<div class="flex flex-wrap justify-center gap-4">
-				<a href="/research" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold shadow-md">
-					View Research
-				</a>
-				<a href="/publications" class="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors font-semibold border-2 border-blue-600">
-					Publications
-				</a>
-				<a href="/contact" class="bg-gray-100 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-200 transition-colors font-semibold">
-					Get in Touch
-				</a>
+			<div class="flex-1 text-center md:text-left">
+				<h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+					Yihao Dong
+				</h1>
+				<p class="text-2xl md:text-3xl text-blue-600 font-semibold mb-4">
+					PhD Candidate (Expected 2028)
+				</p>
+				<p class="text-xl text-gray-700 mb-4">
+					Human-Computer Interaction • The University of Sydney
+				</p>
+				<p class="text-lg text-gray-600 max-w-2xl mb-12">
+					Enhancing User Experience in Extended Reality through Predictive Hand Gesture Tracking and Multimodal Feedback.
+				</p>
+
+				<div class="flex flex-wrap justify-center md:justify-start gap-4">
+					<a href="/research" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold shadow-md flex items-center">
+						View Research
+					</a>
+					<a href="/CV_Yihao_Dong.pdf" target="_blank" class="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors font-semibold border-2 border-blue-600 flex items-center">
+						<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+						</svg>
+						Download CV
+					</a>
+					<a href="/publications" class="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors font-semibold border border-gray-300">
+						Publications
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- News Section -->
+<section class="py-12 bg-blue-50">
+	<div class="section-container">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+				<span class="mr-3">📢</span> Latest News
+			</h2>
+			<div class="space-y-4">
+				<div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-500 flex items-start gap-4">
+					<span class="text-sm font-bold text-blue-600 whitespace-nowrap mt-1">FEB 2026</span>
+					<p class="text-gray-700">🚀 Two papers accepted at <strong>CHI '26</strong> in Barcelona! Looking forward to presenting <em>TactDeform</em> and <em>SRL Proxemics</em>.</p>
+				</div>
+				<div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-300 flex items-start gap-4">
+					<span class="text-sm font-bold text-blue-600 whitespace-nowrap mt-1">NOV 2025</span>
+					<p class="text-gray-700">🏆 Awarded the <strong>Best Early PhD Project</strong> in 2025 at the University of Sydney School of Computer Science Research Showcase.</p>
+				</div>
+				<div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-gray-300 flex items-start gap-4 opacity-75">
+					<span class="text-sm font-bold text-gray-500 whitespace-nowrap mt-1">MAR 2025</span>
+					<p class="text-gray-700">📖 <em>Just Before Touch</em> published at <strong>Augmented Humans (AHs '25)</strong>.</p>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -84,7 +120,7 @@
 	<div class="max-w-5xl mx-auto">
 		<h2 class="section-heading text-center">Recent Publications</h2>
 		<div class="space-y-6">
-			{#each publications as pub}
+			{#each publications.slice(0, 3) as pub}
 				<div class="card">
 					<h3 class="text-xl font-bold text-gray-900 mb-2">
 						{pub.title}
