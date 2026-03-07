@@ -5,48 +5,48 @@
 
 	const researchAreas = [
 		{
-			title: 'Extended Reality (XR/VR)',
-			description: 'Investigating immersive technologies and their applications in enhancing human experiences and interactions in virtual and augmented environments.',
-			icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+			title: 'Sensory Augmentation',
+			description: 'Investigating how wearable technologies can expand human perception, particularly for individuals with sensory impairments.',
+			icon: 'M13 10V3L4 14h7v7l9-11h-7z'
 		},
 		{
 			title: 'Haptic Feedback',
-			description: 'Exploring tactile and vibrotactile feedback mechanisms to create more immersive and intuitive interactions in virtual environments.',
+			description: 'Exploring tactile and vibrotactile feedback mechanisms to communicate environmental information and enhance spatial awareness.',
 			icon: 'M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11'
 		},
 		{
-			title: 'Gesture Tracking',
-			description: 'Developing predictive algorithms for hand gesture recognition and tracking to reduce latency and improve interaction naturalness in XR systems.',
-			icon: 'M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4'
+			title: 'Assistive Technology',
+			description: 'Designing and developing interactive systems that empower people with vision impairment to navigate and understand their surroundings.',
+			icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z'
 		},
 		{
-			title: 'Usability Engineering',
-			description: 'Applying user-centered design principles and empirical evaluation methods to assess and improve the usability of interactive systems.',
-			icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'
+			title: 'Multisensory Perception',
+			description: 'Studying how the brain integrates information from different senses and how to leverage this for effective sensory substitution.',
+			icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z'
 		}
 	];
 
 	const thesisOverview = {
-		title: 'Enhancing User Experience in Extended Reality through Predictive Hand Gesture Tracking',
-		overview: 'My doctoral research investigates how predictive algorithms and proactive feedback can enhance user experiences in Extended Reality environments. The work focuses on reducing perceived latency and improving interaction naturalness through anticipatory systems that predict user intentions before physical actions are completed.',
+		title: 'Sensory Augmentation for Vision Impairment through Haptics',
+		overview: 'My doctoral research investigates how sensory augmentation and haptic feedback can help people with vision impairment understand their environment. The work focuses on developing wearable systems that translate visual and spatial information into intuitive tactile sensations, enabling more independent navigation and interaction.',
 		objectives: [
-			'Develop predictive models for hand gesture tracking in VR/XR environments',
-			'Investigate the role of proactive haptic feedback in shaping user perception',
-			'Evaluate the impact of predictive interactions on user experience and task performance',
-			'Establish design guidelines for implementing predictive interfaces in XR systems'
+			'Design intuitive haptic metaphors for communicating spatial information',
+			'Develop wearable sensory augmentation systems for real-world navigation',
+			'Investigate the long-term cognitive impact of using sensory substitution devices',
+			'Establish design guidelines for accessible multisensory interfaces'
 		],
 		methodology: [
-			'User studies and controlled experiments',
-			'Quantitative and qualitative data analysis',
-			'Iterative prototyping and evaluation',
-			'Machine learning and predictive modeling'
+			'User-centered design with the vision impairment community',
+			'Qualitative interviews and field studies',
+			'Iterative prototyping of wearable haptic devices',
+			'Quantitative evaluation of spatial awareness and navigation performance'
 		]
 	};
 </script>
 
 <svelte:head>
 	<title>Research - Yihao Dong</title>
-	<meta name="description" content="Explore Yihao Dong's research in Extended Reality, haptic feedback, and predictive hand gesture tracking." />
+	<meta name="description" content="Explore Yihao Dong's research in sensory augmentation, haptics, and assistive technology for vision impairment." />
 </svelte:head>
 
 <!-- Page Header -->
@@ -56,7 +56,7 @@
 			Research
 		</h1>
 		<p class="text-xl text-gray-600 text-center max-w-3xl mx-auto">
-			Advancing Human-Computer Interaction through innovative Extended Reality technologies
+			Advancing Human-Computer Interaction through Sensory Augmentation and Assistive Technologies
 		</p>
 	</div>
 </section>
@@ -65,8 +65,8 @@
 <section class="section-container pb-0">
 	<div class="max-w-4xl mx-auto text-center">
 		<blockquote class="text-2xl md:text-3xl font-serif italic text-blue-800 leading-relaxed mb-8">
-			"I aim to eliminate the boundary between virtual and physical touch by leveraging 
-			anticipatory algorithms and proactive multisensory feedback."
+			"I aim to empower individuals with sensory impairments by creating intuitive, 
+			haptic-based sensory augmentation systems that bridge the gap between the environment and perception."
 		</blockquote>
 		<div class="w-24 h-1 bg-blue-600 mx-auto"></div>
 	</div>
@@ -203,14 +203,14 @@
 		<div class="max-w-4xl mx-auto">
 			<h2 class="text-3xl font-bold mb-6 text-center">Current & Future Work</h2>
 			<p class="text-lg text-blue-100 mb-6 leading-relaxed">
-				I am currently investigating how proactive vibrotactile cues can manipulate perceived haptic
-				sensations in virtual reality, exploring the temporal boundaries of multisensory integration.
-				My work aims to establish design principles for creating more responsive and natural XR interactions.
+				I am currently investigating how wearable haptic devices can provide real-time spatial awareness 
+				for people with vision impairment, focusing on the design of intuitive haptic metaphors.
+				My work aims to establish a framework for effective sensory augmentation that minimizes cognitive load.
 			</p>
 			<p class="text-lg text-blue-100 leading-relaxed">
-				Future research directions include exploring the role of multimodal feedback in complex XR tasks,
-				investigating individual differences in perception and prediction, and developing adaptive systems
-				that can personalize interactions based on user behavior and preferences.
+				Future research directions include exploring the potential of multimodal sensory substitution 
+				(combining haptics and audio), longitudinal studies on neural plasticity and device adaptation, 
+				and the development of context-aware assistive systems that leverage computer vision and AI.
 			</p>
 			<div class="mt-8 text-center">
 				<a href="/publications" class="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors font-semibold inline-block shadow-lg">

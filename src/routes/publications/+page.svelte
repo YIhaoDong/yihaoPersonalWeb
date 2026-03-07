@@ -69,7 +69,7 @@
 
 <svelte:head>
 	<title>Publications - Yihao Dong</title>
-	<meta name="description" content="Academic publications by Yihao Dong in Human-Computer Interaction, Extended Reality, and haptic feedback." />
+	<meta name="description" content="Academic publications by Yihao Dong in Human-Computer Interaction, sensory augmentation, and haptic feedback." />
 </svelte:head>
 
 <!-- Page Header -->

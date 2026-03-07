@@ -8,8 +8,8 @@
 			department: 'Computer Science (Human-Computer Interaction)',
 			period: 'July 2024 - July 2028 (Expected)',
 			supervisor: 'Dr. Anusha Withana',
-			thesis: 'Enhancing User Experience in Extended Reality through Predictive Hand Gesture Tracking',
-			description: 'Researching innovative interaction paradigms for Extended Reality environments, focusing on predictive hand gesture tracking and haptic feedback to enhance user experience and reduce interaction latency.'
+			thesis: 'Sensory Augmentation for Vision Impairment through Haptics',
+			description: 'Researching sensory augmentation to help people with vision impairment understand the environment through haptics, focusing on assistive technology and multisensory perception.'
 		},
 		{
 			degree: 'Bachelor of Advanced Computing (Honours)',
@@ -36,7 +36,7 @@
 
 <svelte:head>
 	<title>About - Yihao Dong</title>
-	<meta name="description" content="Learn more about Yihao Dong, PhD candidate in Human-Computer Interaction at the University of Sydney." />
+	<meta name="description" content="Learn more about Yihao Dong, PhD candidate in the AID lab at the University of Sydney." />
 </svelte:head>
 
 <!-- Page Header -->
@@ -67,9 +67,9 @@
 			<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
 				<p class="mb-4">
 					I am currently pursuing a PhD in the Department of Computer Science at the University of Sydney,
-					under the supervision of <strong>Dr. Anusha Withana</strong> at the <a href="https://creation-lab.org/" target="_blank" class="text-blue-600 hover:underline">CREATION Lab</a>. 
-					My doctoral research focuses on enhancing user experiences in Extended Reality (XR) environments through predictive
-					hand gesture tracking and multimodal haptic feedback.
+					under the supervision of <strong>Dr. Anusha Withana</strong> at the <strong>AID lab</strong>. 
+					My doctoral research focuses on sensory augmentation, helping people with vision impairment 
+					to understand the environment through haptics.
 				</p>
 				<p class="mb-4">
 					My academic journey began with a unique dual degree program, earning both a <strong>Bachelor of Advanced
@@ -78,9 +78,9 @@
 					human-centered perspectives.
 				</p>
 				<p class="mb-4">
-					Throughout my studies, I developed a strong interest in how Extended Reality technologies can transform 
-					human-computer interaction. My work investigates how we can leverage predictive algorithms and 
-					proactive feedback mechanisms to create more natural, intuitive, and responsive XR experiences.
+					Throughout my studies, I developed a strong interest in how assistive technologies can transform 
+					human-computer interaction. My work investigates how we can leverage haptic feedback and 
+					sensory augmentation to create more accessible and intuitive experiences for people with vision impairment.
 				</p>
 				<p>
 					Beyond research, I am a passionate educator, teaching courses ranging from data management 

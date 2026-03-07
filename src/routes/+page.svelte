@@ -6,7 +6,7 @@
 
 <svelte:head>
 	<title>Yihao Dong - PhD Researcher in Human-Computer Interaction</title>
-	<meta name="description" content="Yihao Dong is a PhD candidate at the University of Sydney researching Extended Reality, haptic feedback, and predictive hand gesture tracking." />
+	<meta name="description" content="Yihao Dong is a PhD candidate in the AID lab at the University of Sydney researching sensory augmentation and haptics for people with vision impairment." />
 </svelte:head>
 
 <!-- Hero Section -->
@@ -23,13 +23,13 @@
 					Yihao Dong
 				</h1>
 				<p class="text-2xl md:text-3xl text-blue-600 font-semibold mb-4">
-					PhD Candidate (Expected 2028)
+					PhD Candidate
 				</p>
 				<p class="text-xl text-gray-700 mb-4">
-					Human-Computer Interaction • The University of Sydney
+					AID lab • Human-Computer Interaction • The University of Sydney
 				</p>
 				<p class="text-lg text-gray-600 max-w-2xl mb-12">
-					Enhancing User Experience in Extended Reality through Predictive Hand Gesture Tracking and Multimodal Feedback.
+					Sensory augmentation, helping people with vision impairment to understand the environment through haptics.
 				</p>
 
 				<div class="flex flex-wrap justify-center md:justify-start gap-4">
@@ -81,9 +81,9 @@
 	<div class="max-w-4xl mx-auto">
 		<h2 class="section-heading text-center">About Me</h2>
 		<p class="text-lg text-gray-700 leading-relaxed mb-6">
-			I am a PhD candidate in the Department of Computer Science at the University of Sydney,
-			specializing in Human-Computer Interaction. My research focuses on enhancing user experiences
-			in Extended Reality (XR) environments through predictive hand gesture tracking and haptic feedback.
+			I am a PhD candidate in the AID lab, Department of Computer Science at the University of Sydney,
+			specializing in Human-Computer Interaction. My research focuses on sensory augmentation,
+			helping people with vision impairment to understand the environment through haptics.
 		</p>
 		<p class="text-lg text-gray-700 leading-relaxed mb-8">
 			With a dual background in Advanced Computing (Honours Class I) and Commerce, I bring both

@@ -14,7 +14,7 @@ URL:https://www.linkedin.com/in/yihao-dong/
 URL:https://orcid.org/0009-0009-0719-3670
 URL:https://www.researchgate.net/scientific-contributions/Yihao-Dong-2311639364
 URL:https://dl.acm.org/profile/99661566898
-NOTE:PhD Candidate researching Extended Reality and predictive hand gesture tracking at the University of Sydney.
+NOTE:PhD Candidate researching sensory augmentation and haptics for people with vision impairment at the University of Sydney.
 END:VCARD`;
 		return vCard;
 	}
@@ -162,8 +162,8 @@ END:VCARD`;
 		<div class="max-w-4xl mx-auto text-center">
 			<h2 class="text-3xl font-bold text-gray-900 mb-6">Research Collaboration</h2>
 			<p class="text-lg text-gray-700 mb-6 leading-relaxed">
-				I'm particularly interested in collaborations related to Extended Reality, haptic feedback,
-				gesture tracking, and human-computer interaction. If you have a project idea or research
+				I'm particularly interested in collaborations related to sensory augmentation, haptic feedback,
+				assistive technology, and human-computer interaction. If you have a project idea or research
 				opportunity, please don't hesitate to reach out.
 			</p>
 		</div>

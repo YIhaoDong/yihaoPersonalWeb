@@ -68,14 +68,13 @@
 				</p>
 			</div>
 			<div class="bg-purple-50 border-l-4 border-purple-600 p-6 rounded-lg shadow-sm">
-				<h2 class="text-2xl font-bold text-gray-900 mb-3">Pedagogical Innovation</h2>
+				<h2 class="text-2xl font-bold text-gray-900 mb-3">Guest Lectures</h2>
 				<p class="text-gray-700 leading-relaxed text-sm">
-					I integrate <strong>Extended Reality (XR)</strong> demonstrations into my HCI teaching (e.g., INFO3315) to help students 
-					grasp complex spatial interaction concepts. By bridging theoretical models with immersive experiences, 
-					I foster deeper engagement and practical understanding of usability principles.
+					I delivered a guest lecture for <strong>INFO3315 (Human-Computer Interaction)</strong>, presenting my research 
+					with a focus on <strong>Extended Reality (XR)</strong> and <strong>haptics</strong>. By bridging theoretical 
+					models with practical research examples, I help students understand the future of immersive and tactile interaction paradigms.
 				</p>
-			</div>
-		</div>
+			</div>		</div>
 
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 			<div class="bg-white rounded-lg shadow-md p-6">

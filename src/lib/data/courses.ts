@@ -3,10 +3,24 @@ export interface Course {
 	name: string;
 	semester: string;
 	year: number;
-	role: 'Tutor' | 'Teaching Assistant' | 'Honours Project Examiner';
+	role: 'Tutor' | 'Teaching Assistant' | 'Honours Project Examiner' | 'Co-coordinator';
 }
 
 export const courses: Course[] = [
+	{
+		code: 'COMP9001',
+		name: 'Introduction to Programming',
+		semester: 'S1',
+		year: 2026,
+		role: 'Co-coordinator'
+	},
+	{
+		code: 'COMP9123',
+		name: 'Data Structures and Algorithms',
+		semester: 'S1',
+		year: 2026,
+		role: 'Tutor'
+	},
 	{
 		code: 'INFO4999',
 		name: 'Computer Science Honours',

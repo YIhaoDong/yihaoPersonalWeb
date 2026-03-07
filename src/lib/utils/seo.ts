@@ -44,7 +44,7 @@ export const personSchema = {
 	affiliation: {
 		'@type': 'Organization',
 		name: 'The University of Sydney',
-		department: 'Department of Computer Science'
+		department: 'AID lab, Department of Computer Science'
 	},
 	alumniOf: [
 		{
@@ -54,10 +54,11 @@ export const personSchema = {
 	],
 	knowsAbout: [
 		'Human-Computer Interaction',
-		'Extended Reality',
+		'Sensory Augmentation',
 		'Haptic Feedback',
-		'Gesture Tracking',
-		'Usability Engineering'
+		'Vision Impairment',
+		'Accessibility',
+		'Assistive Technology'
 	],
 	email: 'yihao.dong@outlook.com',
 	address: {

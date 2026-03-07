@@ -36,12 +36,12 @@ export const professionalSkills: string[] = [
 ];
 
 export const researchInterests: string[] = [
-	'Extended Reality (XR/VR)',
+	'Sensory Augmentation',
 	'Human-Computer Interaction',
 	'Haptic Feedback',
-	'Gesture Tracking',
-	'Usability Engineering',
-	'User Experience',
-	'Predictive Interfaces',
-	'Multisensory Perception'
+	'Vision Impairment',
+	'Accessibility',
+	'Assistive Technology',
+	'Multisensory Perception',
+	'Wearable Computing'
 ];

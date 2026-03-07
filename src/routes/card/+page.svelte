@@ -16,7 +16,7 @@ URL:https://www.linkedin.com/in/yihao-dong/
 URL:https://orcid.org/0009-0009-0719-3670
 URL:https://www.researchgate.net/scientific-contributions/Yihao-Dong-2311639364
 URL:https://dl.acm.org/profile/99661566898
-NOTE:PhD Candidate researching Extended Reality and predictive hand gesture tracking at the University of Sydney.
+NOTE:PhD Candidate researching sensory augmentation and haptics for people with vision impairment at the University of Sydney.
 END:VCARD`;
 		return vCard;
 	}
@@ -39,12 +39,12 @@ END:VCARD`;
 	<title>Yihao Dong - Contact Card</title>
 	<meta name="description" content="Save Yihao Dong's contact information to your device" />
 	<meta property="og:title" content="Yihao Dong - Contact Card" />
-	<meta property="og:description" content="PhD Candidate in Human-Computer Interaction at University of Sydney" />
+	<meta property="og:description" content="PhD Candidate in the AID lab at the University of Sydney" />
 	<meta property="og:type" content="profile" />
 </svelte:head>
 
 <!-- Page Header -->
-<section class="bg-gradient-to-br from-blue-50 to-white py-12 min-h-screen flex items-center">
+<section class="bg-gradient-to-br from-blue-50 to-white pt-10 pb-16 min-h-screen flex items-start">
 	<div class="section-container w-full">
 		<div class="max-w-2xl mx-auto">
 			<!-- Contact Preview Card -->
@@ -55,7 +55,7 @@ END:VCARD`;
 						<img src={profileImg} alt="Yihao Dong" class="w-full h-full object-cover" />
 					</div>
 					<h1 class="text-3xl font-bold text-white mb-1">Yihao Dong</h1>
-					<p class="text-blue-100 text-sm font-medium">PhD Candidate @ University of Sydney</p>
+					<p class="text-blue-100 text-sm font-medium">PhD Candidate in AID lab @ University of Sydney</p>
 					
 					<div class="mt-6 flex flex-col gap-3 max-w-xs mx-auto">
 						<a href="/" class="w-full bg-white text-blue-600 px-4 py-3 rounded-full text-sm font-bold shadow-md hover:bg-blue-50 transition-all flex items-center justify-center gap-2">

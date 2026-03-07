@@ -24,8 +24,8 @@
 			<div>
 				<h3 class="text-white text-lg font-bold mb-4">Yihao Dong</h3>
 				<p class="text-sm">
-					PhD Candidate in Human-Computer Interaction at the University of Sydney.
-					Researching Extended Reality and predictive hand gesture tracking.
+					PhD Candidate in the AID lab at the University of Sydney.
+					Researching sensory augmentation and haptic feedback for vision impairment.
 				</p>
 			</div>
 
@@ -70,7 +70,7 @@
 
 		<div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
 			<p>&copy; {currentYear} Yihao Dong. All rights reserved.</p>
-			<p class="mt-2 text-gray-500">Last updated: February 2026</p>
+			<p class="mt-2 text-gray-500">Last updated: March 2026</p>
 		</div>
 	</div>
 </footer>
