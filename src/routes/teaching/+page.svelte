@@ -71,7 +71,7 @@
 				</p>
 			</div>
 			<div class="bg-purple-50 border-l-4 border-purple-600 p-6 rounded-lg shadow-sm">
-				<h2 class="text-2xl font-bold text-gray-900 mb-3">Guest Lectures</h2>
+				<h2 class="text-2xl font-bold text-gray-900 mb-3">Guest Lecture</h2>
 				<p class="text-gray-700 leading-relaxed text-sm">
 					I delivered a guest lecture for <strong>INFO3315 (Human-Computer Interaction)</strong>, presenting my research 
 					with a focus on <strong>Extended Reality (XR)</strong> and <strong>haptics</strong>. By bridging theoretical 
