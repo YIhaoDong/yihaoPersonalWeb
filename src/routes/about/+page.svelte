@@ -36,7 +36,7 @@
 
 <svelte:head>
 	<title>About - Yihao Dong</title>
-	<meta name="description" content="Learn more about Yihao Dong, PhD candidate in the AID lab at the University of Sydney." />
+	<meta name="description" content="Learn more about Yihao Dong, PhD candidate in the aid-lab at the University of Sydney." />
 </svelte:head>
 
 <!-- Page Header -->
@@ -67,7 +67,7 @@
 			<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
 				<p class="mb-4">
 					I am currently pursuing a PhD in the Department of Computer Science at the University of Sydney,
-					under the supervision of <strong>Dr. Anusha Withana</strong> at the <strong>AID lab</strong>. 
+					under the supervision of <strong>Dr. Anusha Withana</strong> at the <strong>aid-lab</strong>. 
 					My doctoral research focuses on sensory augmentation, helping people with vision impairment 
 					to understand the environment through haptics.
 				</p>

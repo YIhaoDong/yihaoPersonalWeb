@@ -24,7 +24,7 @@
 			<div>
 				<h3 class="text-white text-lg font-bold mb-4">Yihao Dong</h3>
 				<p class="text-sm">
-					PhD Candidate in the AID lab at the University of Sydney.
+					PhD Candidate in the aid-lab at the University of Sydney.
 					Researching sensory augmentation and haptic feedback for vision impairment.
 				</p>
 			</div>

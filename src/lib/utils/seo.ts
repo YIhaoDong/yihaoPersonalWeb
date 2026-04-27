@@ -44,7 +44,7 @@ export const personSchema = {
 	affiliation: {
 		'@type': 'Organization',
 		name: 'The University of Sydney',
-		department: 'AID lab, Department of Computer Science'
+		department: 'aid-lab, Department of Computer Science'
 	},
 	alumniOf: [
 		{

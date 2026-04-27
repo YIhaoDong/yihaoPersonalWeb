@@ -39,7 +39,7 @@ END:VCARD`;
 	<title>Yihao Dong - Contact Card</title>
 	<meta name="description" content="Save Yihao Dong's contact information to your device" />
 	<meta property="og:title" content="Yihao Dong - Contact Card" />
-	<meta property="og:description" content="PhD Candidate in the AID lab at the University of Sydney" />
+	<meta property="og:description" content="PhD Candidate in the aid-lab at the University of Sydney" />
 	<meta property="og:type" content="profile" />
 </svelte:head>
 
@@ -55,7 +55,7 @@ END:VCARD`;
 						<img src={profileImg} alt="Yihao Dong" class="w-full h-full object-cover" />
 					</div>
 					<h1 class="text-3xl font-bold text-white mb-1">Yihao Dong</h1>
-					<p class="text-blue-100 text-sm font-medium">PhD Candidate in AID lab @ University of Sydney</p>
+					<p class="text-blue-100 text-sm font-medium">PhD Candidate in aid-lab @ University of Sydney</p>
 					
 					<div class="mt-6 flex flex-col gap-3 max-w-xs mx-auto">
 						<a href="/" class="w-full bg-white text-blue-600 px-4 py-3 rounded-full text-sm font-bold shadow-md hover:bg-blue-50 transition-all flex items-center justify-center gap-2">

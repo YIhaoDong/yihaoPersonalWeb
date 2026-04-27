@@ -6,7 +6,7 @@
 
 <svelte:head>
 	<title>Yihao Dong - PhD Researcher in Human-Computer Interaction</title>
-	<meta name="description" content="Yihao Dong is a PhD candidate in the AID lab at the University of Sydney researching sensory augmentation and haptics for people with vision impairment." />
+	<meta name="description" content="Yihao Dong is a PhD candidate in the aid-lab at the University of Sydney researching sensory augmentation and haptics for people with vision impairment." />
 </svelte:head>
 
 <!-- Hero Section -->
@@ -26,7 +26,7 @@
 					PhD Candidate
 				</p>
 				<p class="text-xl text-gray-700 mb-4">
-					AID lab • Human-Computer Interaction • The University of Sydney
+					aid-lab • Human-Computer Interaction • The University of Sydney
 				</p>
 				<p class="text-lg text-gray-600 max-w-2xl mb-12">
 					Sensory augmentation, helping people with vision impairment to understand the environment through haptics.
@@ -81,7 +81,7 @@
 	<div class="max-w-4xl mx-auto">
 		<h2 class="section-heading text-center">About Me</h2>
 		<p class="text-lg text-gray-700 leading-relaxed mb-6">
-			I am a PhD candidate in the AID lab, Department of Computer Science at the University of Sydney,
+			I am a PhD candidate in the aid-lab, Department of Computer Science at the University of Sydney,
 			specializing in Human-Computer Interaction. My research focuses on sensory augmentation,
 			helping people with vision impairment to understand the environment through haptics.
 		</p>
