@@ -1,39 +1,8 @@
-export interface SEOConfig {
-	title: string;
-	description: string;
-	url?: string;
-	image?: string;
-	type?: 'website' | 'article' | 'profile';
-}
+export const BASE_URL = 'https://yihaodong.me';
+export const SITE_NAME = 'Yihao Dong';
 
-export function generateSEOTags(config: SEOConfig) {
-	const {
-		title,
-		description,
-		url = 'https://yihaodong.com',
-		image = 'https://yihaodong.com/og-image.jpg',
-		type = 'website'
-	} = config;
-
-	return {
-		title,
-		description,
-		canonical: url,
-		openGraph: {
-			type,
-			url,
-			title,
-			description,
-			image,
-			siteName: 'Yihao Dong - PhD Researcher'
-		},
-		twitter: {
-			card: 'summary_large_image',
-			title,
-			description,
-			image
-		}
-	};
+export function ogImageUrl(page: string): string {
+	return `${BASE_URL}/og-image?page=${encodeURIComponent(page)}`;
 }
 
 export const personSchema = {
@@ -68,5 +37,14 @@ export const personSchema = {
 		postalCode: '2000',
 		addressCountry: 'AU'
 	},
-	url: 'https://yihaodong.com'
+	url: BASE_URL
+};
+
+export const websiteSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: SITE_NAME,
+	url: BASE_URL,
+	description:
+		'Personal academic website of Yihao Dong, PhD Candidate in Human-Computer Interaction at the University of Sydney'
 };

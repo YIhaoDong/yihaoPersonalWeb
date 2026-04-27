@@ -2,12 +2,16 @@
 	import { researchInterests } from '$lib/data/skills';
 	import { publications } from '$lib/data/publications';
 	import profileImg from '$lib/assets/home_profileImage.jpeg';
+	import SEO from '$lib/components/SEO.svelte';
 </script>
 
-<svelte:head>
-	<title>Yihao Dong - PhD Researcher in Human-Computer Interaction</title>
-	<meta name="description" content="Yihao Dong is a PhD candidate in the aid-lab at the University of Sydney researching sensory augmentation and haptics for people with vision impairment." />
-</svelte:head>
+<SEO
+	title="Yihao Dong - PhD Researcher in Human-Computer Interaction"
+	description="Yihao Dong is a PhD candidate in the aid-lab at the University of Sydney researching sensory augmentation and haptics for people with vision impairment."
+	path="/"
+	page="Home"
+	type="profile"
+/>
 
 <!-- Hero Section -->
 <section class="bg-gradient-to-br from-blue-50 to-white py-20 md:py-32">

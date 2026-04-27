@@ -2,6 +2,7 @@
 	import { researchInterests } from '$lib/data/skills';
 	import tactDeformImg from '$lib/assets/research/TactDeform.png';
 	import justBeforeTouchImg from '$lib/assets/research/Ahs-JustBeforeTouch.png';
+	import SEO from '$lib/components/SEO.svelte';
 
 	const researchAreas = [
 		{
@@ -44,10 +45,12 @@
 	};
 </script>
 
-<svelte:head>
-	<title>Research - Yihao Dong</title>
-	<meta name="description" content="Explore Yihao Dong's research in sensory augmentation, haptics, and assistive technology for vision impairment." />
-</svelte:head>
+<SEO
+	title="Research - Yihao Dong"
+	description="Explore Yihao Dong's research in sensory augmentation, haptic feedback, and assistive technology for vision impairment at the University of Sydney."
+	path="/research"
+	page="Research"
+/>
 
 <!-- Page Header -->
 <section class="bg-gradient-to-br from-blue-50 to-white py-16">
@@ -78,7 +81,7 @@
 		<h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Featured Research Projects</h2>
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
 			<!-- Project 1 -->
-			<div class="group">
+			<a href="/publications#pub-1" class="group block cursor-pointer">
 				<div class="relative overflow-hidden rounded-2xl shadow-lg mb-6 bg-gray-100 aspect-video flex items-center justify-center border border-gray-100">
 					<img src={tactDeformImg} alt="TactDeform System" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
 					<div class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
@@ -87,13 +90,13 @@
 				</div>
 				<h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">TactDeform</h3>
 				<p class="text-gray-700 leading-relaxed mb-4">
-					Finger pad deformation inspired spatial tactile feedback for virtual geometry exploration. 
+					Finger pad deformation inspired spatial tactile feedback for virtual geometry exploration.
 					A system that mimics the natural deformation of the finger pad to provide high-fidelity haptic sensations.
 				</p>
-			</div>
+			</a>
 
 			<!-- Project 2 -->
-			<div class="group">
+			<a href="/publications#pub-3" class="group block cursor-pointer">
 				<div class="relative overflow-hidden rounded-2xl shadow-lg mb-6 bg-gray-100 aspect-video flex items-center justify-center border border-gray-100">
 					<img src={justBeforeTouchImg} alt="Just Before Touch System" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
 					<div class="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
@@ -102,10 +105,10 @@
 				</div>
 				<h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Just Before Touch</h3>
 				<p class="text-gray-700 leading-relaxed mb-4">
-					Manipulating perceived haptic sensations through proactive vibrotactile cues. 
+					Manipulating perceived haptic sensations through proactive vibrotactile cues.
 					Using anticipatory feedback to "prime" the user's nervous system before actual physical contact.
 				</p>
-			</div>
+			</a>
 		</div>
 	</div>
 </section>

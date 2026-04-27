@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { courses } from '$lib/data/courses';
+	import SEO from '$lib/components/SEO.svelte';
 
 	// Group courses by role, then by code
 	const coursesByRole = courses.reduce((acc, course) => {
@@ -40,10 +41,12 @@
 	I strive to make complex concepts accessible through clear explanations, real-world examples, and hands-on exercises.`;
 </script>
 
-<svelte:head>
-	<title>Teaching - Yihao Dong</title>
-	<meta name="description" content="Teaching experience and courses taught by Yihao Dong at the University of Sydney." />
-</svelte:head>
+<SEO
+	title="Teaching - Yihao Dong"
+	description="Teaching experience and philosophy of Yihao Dong at the University of Sydney — tutorial instruction, assessment, and feedback across HCI and computing courses."
+	path="/teaching"
+	page="Teaching"
+/>
 
 <!-- Page Header -->
 <section class="bg-gradient-to-br from-blue-50 to-white py-16">

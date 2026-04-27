@@ -1,5 +1,6 @@
 <script lang="ts">
 	import profileImg from '$lib/assets/card_profileImage.jpeg';
+	import SEO from '$lib/components/SEO.svelte';
 
 	function generateVCard(): string {
 		const vCard = `BEGIN:VCARD
@@ -35,13 +36,13 @@ END:VCARD`;
 	}
 </script>
 
-<svelte:head>
-	<title>Yihao Dong - Contact Card</title>
-	<meta name="description" content="Save Yihao Dong's contact information to your device" />
-	<meta property="og:title" content="Yihao Dong - Contact Card" />
-	<meta property="og:description" content="PhD Candidate in the aid-lab at the University of Sydney" />
-	<meta property="og:type" content="profile" />
-</svelte:head>
+<SEO
+	title="Yihao Dong - Contact Card"
+	description="Digital contact card for Yihao Dong, PhD Candidate in Human-Computer Interaction at the University of Sydney. Save contact details directly to your device."
+	path="/card"
+	page="Contact Card"
+	type="profile"
+/>
 
 <!-- Page Header -->
 <section class="bg-gradient-to-br from-blue-50 to-white pt-10 pb-16 min-h-screen flex items-start">

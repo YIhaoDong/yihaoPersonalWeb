@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { technicalSkills, professionalSkills } from '$lib/data/skills';
+	import SEO from '$lib/components/SEO.svelte';
 
 	const education = [
 		{
@@ -34,10 +35,12 @@
 	];
 </script>
 
-<svelte:head>
-	<title>About - Yihao Dong</title>
-	<meta name="description" content="Learn more about Yihao Dong, PhD candidate in the aid-lab at the University of Sydney." />
-</svelte:head>
+<SEO
+	title="About - Yihao Dong"
+	description="Learn about Yihao Dong, PhD candidate in HCI at the University of Sydney — background in Advanced Computing and Commerce, researching haptics and sensory augmentation."
+	path="/about"
+	page="About"
+/>
 
 <!-- Page Header -->
 <section class="bg-gradient-to-br from-blue-50 to-white py-16 border-b border-blue-100">
@@ -52,7 +55,7 @@
 				</svg>
 				Download Full CV (PDF)
 			</a>
-			<a href="https://scholar.google.com" target="_blank" class="bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-gray-50 transition-colors font-semibold border border-gray-300 shadow-sm flex items-center text-sm">
+			<a href="https://scholar.google.com/citations?user=y9KUBZAAAAAJ" target="_blank" class="bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-gray-50 transition-colors font-semibold border border-gray-300 shadow-sm flex items-center text-sm">
 				Google Scholar
 			</a>
 		</div>

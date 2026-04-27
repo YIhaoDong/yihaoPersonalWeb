@@ -1,9 +1,50 @@
 <script lang="ts">
+	import { afterNavigate } from '$app/navigation';
 	import { publications } from '$lib/data/publications';
+	import SEO from '$lib/components/SEO.svelte';
+	import { BASE_URL } from '$lib/utils/seo';
+
+	const publicationsSchema = {
+		'@context': 'https://schema.org',
+		'@type': 'ItemList',
+		name: 'Publications by Yihao Dong',
+		url: `${BASE_URL}/publications`,
+		itemListElement: publications.map((pub, i) => ({
+			'@type': 'ListItem',
+			position: i + 1,
+			item: {
+				'@type': 'ScholarlyArticle',
+				name: pub.title,
+				author: pub.authors.split(', ').map((a) => ({ '@type': 'Person', name: a.trim() })),
+				datePublished: pub.year.toString(),
+				url: `https://doi.org/${pub.doi}`,
+				identifier: { '@type': 'PropertyValue', propertyID: 'DOI', value: pub.doi },
+				isPartOf: {
+					'@type': pub.type === 'conference' ? 'ScholarlyEvent' : 'Periodical',
+					name: pub.venue
+				}
+			}
+		}))
+	};
 
 	let selectedYear = $state<number | 'all'>('all');
 	let selectedType = $state<string>('all');
 	let copiedId = $state<number | null>(null);
+	let highlightedId = $state<string | null>(null);
+
+	afterNavigate(({ to }) => {
+		const hash = to?.url?.hash ?? '';
+		if (hash.startsWith('#pub-')) {
+			highlightedId = hash.slice(1);
+			setTimeout(() => {
+				const el = document.getElementById(hash.slice(1));
+				if (el) {
+					const top = el.getBoundingClientRect().top + window.scrollY - 80;
+					window.scrollTo({ top, behavior: 'smooth' });
+				}
+			}, 50);
+		}
+	});
 
 	const years = [...new Set(publications.map(p => p.year))].sort((a, b) => b - a);
 	const types = [...new Set(publications.map(p => p.type))];
@@ -67,9 +108,15 @@
 	}
 </script>
 
+<SEO
+	title="Publications - Yihao Dong"
+	description="Academic publications by Yihao Dong including CHI and Augmented Humans papers on haptics, sensory augmentation, and human-computer interaction."
+	path="/publications"
+	page="Publications"
+/>
+
 <svelte:head>
-	<title>Publications - Yihao Dong</title>
-	<meta name="description" content="Academic publications by Yihao Dong in Human-Computer Interaction, sensory augmentation, and haptic feedback." />
+	{@html `<script type="application/ld+json">${JSON.stringify(publicationsSchema)}</script>`}
 </svelte:head>
 
 <!-- Page Header -->
@@ -81,24 +128,11 @@
 		<p class="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-8">
 			Peer-reviewed research in top HCI venues
 		</p>
-		<div class="flex justify-center gap-6">
-			<a href="https://scholar.google.com/citations?user=y9KUBZAAAAAJ" target="_blank" class="flex flex-col items-center group">
-				<div class="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center mb-2 group-hover:bg-blue-50 transition-colors">
-					<svg class="w-6 h-6 text-gray-700 group-hover:text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-						<path d="M5.242 13.769L0.5 9.5 12 0l11.5 9.5-4.742 4.269C17.547 12.688 14.881 12 12 12s-5.547 0.688-6.758 1.769zm6.758 8.231c-3.134 0-5.673-1.638-6.621-3.957C4.614 17.541 4 17.026 4 16.5c0-0.276 0.224-0.5 0.5-0.5s0.5 0.224 0.5 0.5c0 0.203 0.354 0.519 0.941 0.778C7.152 18.257 9.423 19 12 19s4.848-0.743 6.059-1.222C19.146 17.519 19.5 17.203 19.5 17c0-0.276 0.224-0.5 0.5-0.5s0.5 0.224 0.5 0.5c0 0.526-0.614 1.041-1.379 1.543-0.948 2.319-3.487 3.957-6.621 3.957z" />
-					</svg>
-				</div>
-				<span class="text-xs font-semibold text-gray-600 group-hover:text-blue-600">Google Scholar</span>
+		<!-- <div class="flex justify-center gap-6">
+			<a href="https://scholar.google.com/citations?user=y9KUBZAAAAAJ" target="_blank" class="bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-gray-50 transition-colors font-semibold border border-gray-300 shadow-sm flex items-center text-sm">
+				Google Scholar
 			</a>
-			<a href="https://orcid.org/0009-0009-0719-3670" target="_blank" class="flex flex-col items-center group">
-				<div class="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center mb-2 group-hover:bg-blue-50 transition-colors">
-					<svg class="w-6 h-6 text-gray-700 group-hover:text-green-600" fill="currentColor" viewBox="0 0 24 24">
-						<path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 18.378H5.855V6.666h1.514v11.712zm-0.757-12.72c-0.528 0-0.957-0.429-0.957-0.957s0.429-0.957 0.957-0.957 0.957 0.429 0.957 0.957-0.429 0.957-0.957 0.957zm10.514 12.72h-1.514v-4.53c0-1.136-0.407-1.91-1.425-1.91-0.777 0-1.24 0.523-1.444 1.029-0.075 0.181-0.094 0.434-0.094 0.686v3.725h-1.514s0.02-10.612 0-11.712h1.514v1.658c0.201-0.311 0.563-0.753 1.365-0.753 0.996 0 1.742 0.65 1.742 2.048v8.759z" />
-					</svg>
-				</div>
-				<span class="text-xs font-semibold text-gray-600 group-hover:text-green-600">ORCID</span>
-			</a>
-		</div>
+		</div> -->
 	</div>
 </section>
 
@@ -152,7 +186,7 @@
 		<!-- Publications List -->
 		<div class="space-y-8">
 			{#each filteredPublications() as pub, index}
-				<article class="card hover:shadow-xl transition-shadow duration-300">
+				<article id="pub-{pub.id}" class="card hover:shadow-xl transition-shadow duration-300 scroll-mt-20" class:pub-highlighted={highlightedId === `pub-${pub.id}`}>
 					<!-- Publication Number -->
 					<div class="flex items-start gap-6">
 						<div class="hidden md:flex bg-blue-100 text-blue-700 font-bold text-lg w-12 h-12 rounded-full items-center justify-center flex-shrink-0">
@@ -316,3 +350,15 @@
 		</div>
 	</div>
 </section>
+
+<style>
+	@keyframes highlight-fade {
+		0%   { box-shadow: 0 0 0 3px rgb(59 130 246), 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); background-color: rgb(239 246 255); }
+		60%  { box-shadow: 0 0 0 3px rgb(59 130 246), 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); background-color: rgb(239 246 255); }
+		100% { box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); background-color: rgb(255 255 255); }
+	}
+
+	:global(.pub-highlighted) {
+		animation: highlight-fade 2.5s ease-out forwards;
+	}
+</style>

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import SEO from '$lib/components/SEO.svelte';
+
 	function generateVCard(): string {
 		const vCard = `BEGIN:VCARD
 VERSION:3.0
@@ -9,10 +11,10 @@ ORG:University of Sydney
 EMAIL;TYPE=INTERNET:yihao.dong@sydney.edu.au
 TEL;TYPE=CELL:+61478092618
 ADR;TYPE=WORK:;;School of Computer Science, University of Sydney, 1 Cleveland St;Sydney;NSW;2008;Australia
+URL:https://yihaodong.me
 URL:https://scholar.google.com/citations?user=y9KUBZAAAAAJ
 URL:https://www.linkedin.com/in/yihao-dong/
 URL:https://orcid.org/0009-0009-0719-3670
-URL:https://www.researchgate.net/scientific-contributions/Yihao-Dong-2311639364
 URL:https://dl.acm.org/profile/99661566898
 NOTE:PhD Candidate researching sensory augmentation and haptics for people with vision impairment at the University of Sydney.
 END:VCARD`;
@@ -55,17 +57,20 @@ END:VCARD`;
 
 	const academicProfiles = [
 		{ name: 'Google Scholar', href: 'https://scholar.google.com/citations?user=y9KUBZAAAAAJ', available: true },
-		{ name: 'ResearchGate', href: 'https://www.researchgate.net/scientific-contributions/Yihao-Dong-2311639364', available: true },
+		// { name: 'ResearchGate', href: 'https://www.researchgate.net/scientific-contributions/Yihao-Dong-2311639364', available: true },
 		{ name: 'LinkedIn', href: 'https://www.linkedin.com/in/yihao-dong/', available: true },
 		{ name: 'ORCID', href: 'https://orcid.org/0009-0009-0719-3670', available: true },
-		{ name: 'ACM Digital Library', href: 'https://dl.acm.org/profile/99661566898', available: true }
+		{ name: 'ACM Digital Library', href: 'https://dl.acm.org/profile/99661566898', available: true },
+		{ name: 'aid-lab profile', href: 'https://www.aid-lab.org/team/yihao-dong', available: true }
 	];
 </script>
 
-<svelte:head>
-	<title>Contact - Yihao Dong</title>
-	<meta name="description" content="Get in touch with Yihao Dong for research collaboration, academic inquiries, or general questions." />
-</svelte:head>
+<SEO
+	title="Contact - Yihao Dong"
+	description="Get in touch with Yihao Dong for research collaboration, academic inquiries, or general questions. Available via email, phone, or academic profiles."
+	path="/contact"
+	page="Contact"
+/>
 
 <!-- Page Header -->
 <section class="bg-gradient-to-br from-blue-50 to-white py-16">
