@@ -64,6 +64,10 @@
 			</h2>
 			<div class="space-y-4">
 				<div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-500 flex items-start gap-4">
+					<span class="text-sm font-bold text-blue-600 whitespace-nowrap mt-1">APR 2026</span>
+					<p class="text-gray-700">🎉 I'll be at <strong>CHI '26</strong> in Barcelona presenting the <em>TactDeform</em> paper and the interactive demo! Come join our demo sessions and the paper presentation, feel free to reach out for a <strong>coffee chat</strong> ☕</p>
+				</div>
+				<div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-400 flex items-start gap-4">
 					<span class="text-sm font-bold text-blue-600 whitespace-nowrap mt-1">FEB 2026</span>
 					<p class="text-gray-700">🚀 Two papers accepted at <strong>CHI '26</strong> in Barcelona! Looking forward to presenting <em>TactDeform</em> and <em>SRL Proxemics</em>.</p>
 				</div>
