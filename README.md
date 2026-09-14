@@ -1,279 +1,96 @@
-# Yihao Dong - Personal Academic Website
+# yihaodong.me
 
-A professional personal website showcasing academic work, research, publications, and teaching experience.
+Personal academic website of Yihao Dong, PhD candidate in Human-Computer
+Interaction at the University of Sydney. Redesigned in September 2026 around a
+single idea, **Tactile**: the site borrows the electrode dot grid from Yihao's
+own haptics research and lets visitors feel their way through it. The design
+rationale, palette, type and page-by-page plan are in [`DESIGN.md`](DESIGN.md).
 
-## 🌟 Features
+## Stack
 
-- **Modern Design**: Clean, professional aesthetic with smooth animations and transitions
-- **Fully Responsive**: Optimized for all device sizes (mobile, tablet, desktop)
-- **SEO Optimized**: Meta tags, Open Graph tags, and structured data for search engines
-- **Fast Performance**: Built with SvelteKit and Tailwind CSS for optimal performance
-- **Accessible**: WCAG 2.1 AA compliant with keyboard navigation support
-- **Easy Content Updates**: Centralized data files for easy content management
+- SvelteKit 2 with Svelte 5 runes, TypeScript, Tailwind CSS 3.4
+- Vercel adapter (`card.yihaodong.me` rewrites to `/card` via `vercel.json`)
+- Self-hosted fonts through `@fontsource`: Fraunces (display), Instrument Sans
+  (body), IBM Plex Mono (metadata)
+- Open Graph images rendered on demand with Satori + resvg (`/og-image?page=…`)
 
-## 📄 Pages
-
-- **Home**: Hero section with research highlights and recent publications
-- **About**: Detailed biography, education timeline, skills, and languages
-- **Research**: PhD thesis overview, research areas, and interests
-- **Publications**: Filterable list of publications with BibTeX export
-- **Teaching**: Courses taught with responsibilities and philosophy
-- **Projects**: Academic projects with detailed descriptions
-- **Contact**: Contact form and information
-
-## 🛠️ Tech Stack
-
-- **Framework**: [SvelteKit](https://kit.svelte.dev/) - Modern web framework
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) - Utility-first CSS framework
-- **Language**: TypeScript - Type-safe development
-- **Deployment**: [Vercel](https://vercel.com/) - Optimized for serverless deployment
-- **Fonts**: Google Fonts (Inter & Merriweather)
-
-## 📦 Project Structure
-
-```
-my-website/
-├── src/
-│   ├── lib/
-│   │   ├── components/       # Reusable Svelte components
-│   │   │   ├── Header.svelte
-│   │   │   └── Footer.svelte
-│   │   ├── data/            # Content data files
-│   │   │   ├── publications.ts
-│   │   │   ├── courses.ts
-│   │   │   ├── projects.ts
-│   │   │   └── skills.ts
-│   │   └── utils/           # Utility functions
-│   │       └── seo.ts
-│   ├── routes/              # SvelteKit routes
-│   │   ├── +layout.svelte   # Main layout
-│   │   ├── +page.svelte     # Home page
-│   │   ├── about/
-│   │   ├── research/
-│   │   ├── publications/
-│   │   ├── teaching/
-│   │   ├── projects/
-│   │   └── contact/
-│   └── app.css              # Global styles with Tailwind
-├── static/                  # Static assets
-├── package.json
-├── svelte.config.js
-└── tsconfig.json
-```
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+ and npm installed
-- Basic knowledge of SvelteKit (optional for content updates)
-
-### Installation
-
-1. Clone or navigate to the project directory:
-   ```bash
-   cd my-website
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open your browser and visit [http://localhost:5173](http://localhost:5173)
-
-### Build for Production
+## Running it
 
 ```bash
+npm install
+npm run dev        # http://localhost:5173
+npm run check      # svelte-check
 npm run build
-```
-
-Preview the production build:
-```bash
 npm run preview
 ```
 
-## 📝 Updating Content
+## Where things live
 
-### Publications
-
-Edit `src/lib/data/publications.ts`:
-
-```typescript
-export const publications: Publication[] = [
-  {
-    id: 1,
-    title: 'Your Paper Title',
-    authors: 'Author1, Author2, Author3',
-    venue: 'Conference Name',
-    year: 2025,
-    doi: '10.1145/xxxxx',
-    pages: '10 pages',
-    type: 'conference',
-    isFirstAuthor: true
-  }
-];
+```
+src/
+├── app.css                  # design tokens, base styles, utilities
+├── app.html                 # favicon, meta
+├── lib/
+│   ├── site.ts              # personal details, profiles, vCard builder
+│   ├── actions/reveal.ts    # scroll-reveal action (reduced-motion aware)
+│   ├── utils/
+│   │   ├── braille.ts       # Grade 1 Braille cells for the Braille component
+│   │   ├── haptics.ts       # navigator.vibrate helper
+│   │   └── seo.ts           # schema.org objects
+│   ├── components/
+│   │   ├── Header.svelte / Footer.svelte / SectionHead.svelte
+│   │   ├── Mark.svelte      # 3×3 dot mark (also the favicon)
+│   │   ├── Braille.svelte   # renders a word as Braille dots
+│   │   ├── DotField.svelte  # interactive hero canvas
+│   │   ├── SemesterGrid.svelte
+│   │   ├── Clock.svelte     # live Sydney time
+│   │   └── demos/           # TactDeformDemo, JustBeforeTouchDemo
+│   └── data/
+│       ├── publications.ts  # papers + bibtex()
+│       ├── news.ts
+│       ├── courses.ts       # units, appointments, guest lectures
+│       ├── awards.ts        # awards + service
+│       └── skills.ts        # toolbox + research interests
+└── routes/
+    ├── +layout.svelte       # fonts, view transitions, header/footer
+    ├── +page.svelte         # home
+    ├── research/ publications/ teaching/ about/ contact/ card/
+    ├── og-image/+server.ts
+    └── sitemap.xml/+server.ts
 ```
 
-### Courses
+## Updating content
 
-Edit `src/lib/data/courses.ts`:
+Almost everything editable lives in `src/lib/data/*.ts` and `src/lib/site.ts`.
 
-```typescript
-export const courses: Course[] = [
-  {
-    code: 'COMP5427',
-    name: 'Usability Engineering',
-    semester: 'S1',
-    year: 2025,
-    role: 'Teaching Assistant'
-  }
-];
-```
+- **A new paper**: add an entry to `publications.ts`. `teaser` is a one- or
+  two-sentence plain-language summary; `project` links it to a section id on
+  `/research`; `code` and `award` are optional. For `bibtex`, paste the record
+  from Crossref: `curl -LH "Accept: application/x-bibtex" https://doi.org/<DOI>`.
+- **News**: prepend one line to `news.ts` (`date` as YYYY-MM,
+  casual first-person `text` that may contain `<strong>`, `<em>` or `<a>`).
+- **Teaching**: add rows to `courses.ts`; the semester grid, counts and legend
+  update themselves. Appointments and guest lectures are in the same file.
+- **Awards, service, toolbox, interests**: `awards.ts` and `skills.ts`.
+- **Contact details / profiles / CV path / "last updated"**: `site.ts`.
+- **CV**: replace `static/CV_Yihao_Dong.pdf`.
+- **Photos**: `src/lib/assets/`. Poster images are the downscaled `.jpg` files
+  in `assets/research/`; the original PNGs are kept as sources.
 
-### Projects
+## Design tokens
 
-Edit `src/lib/data/projects.ts`:
+Colours are CSS custom properties in `src/app.css` and are exposed to Tailwind
+as `paper`, `paper-2`, `ink`, `ink-2`, `ink-3`, `line`, `dot`, `accent` and
+`accent-ink` (e.g. `bg-paper`, `text-ink-2`, `border-line`). The site is
+light-only by decision; there is no dark theme.
 
-```typescript
-export const projects: Project[] = [
-  {
-    id: 1,
-    title: 'Project Title',
-    year: 2022,
-    description: 'Project description...',
-    responsibilities: ['Task 1', 'Task 2'],
-    outcomes: 'Results and achievements',
-    technologies: ['Python', 'JavaScript']
-  }
-];
-```
+## Accessibility notes
 
-### Skills & Research Interests
-
-Edit `src/lib/data/skills.ts` to update technical skills, professional skills, and research interests.
-
-### Personal Information
-
-Update contact information in:
-- `src/lib/components/Footer.svelte`
-- `src/routes/contact/+page.svelte`
-- `src/lib/utils/seo.ts`
-
-## 🚢 Deployment
-
-### Deploy to Vercel (Recommended)
-
-1. Push your code to GitHub/GitLab/Bitbucket
-
-2. Visit [vercel.com](https://vercel.com) and import your repository
-
-3. Vercel will auto-detect SvelteKit and configure everything automatically
-
-4. Click "Deploy" - your site will be live in minutes!
-
-Or using Vercel CLI:
-```bash
-npm install -g vercel
-vercel
-```
-
-### Deploy to Netlify
-
-1. Install Netlify adapter:
-   ```bash
-   npm install -D @sveltejs/adapter-netlify
-   ```
-
-2. Update `svelte.config.js`:
-   ```javascript
-   import adapter from '@sveltejs/adapter-netlify';
-   ```
-
-3. Push to Git and connect to Netlify, or use CLI:
-   ```bash
-   npm run build
-   netlify deploy --prod
-   ```
-
-## 🎨 Customization
-
-### Colors
-
-The color scheme uses Tailwind CSS. Main colors:
-- **Primary**: Blue (blue-600, blue-700)
-- **Accent**: Various complementary colors
-- **Background**: White and light gray (gray-50)
-
-To change colors, update class names in components or modify `src/app.css`.
-
-### Fonts
-
-Current fonts from Google Fonts:
-- **Headings**: Inter (sans-serif)
-- **Body**: Merriweather (serif)
-
-Update font imports in `src/routes/+layout.svelte`.
-
-### Adding New Pages
-
-1. Create a new directory in `src/routes/`
-2. Add a `+page.svelte` file
-3. Update navigation in `src/lib/components/Header.svelte`
-
-## 🔧 Maintenance
-
-### Adding a Blog
-
-To add a blog section:
-1. Install MDsveX for Markdown support
-2. Create `src/routes/blog/` directory
-3. Add blog posts as `.md` or `.svx` files
-
-### Analytics
-
-To add Google Analytics or Plausible:
-1. Add tracking script in `src/routes/+layout.svelte`
-2. Ensure privacy compliance (GDPR, CCPA)
-
-### Contact Form Backend
-
-The contact form currently uses client-side validation only. To add backend functionality:
-
-**Option 1: FormSpree**
-```html
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-```
-
-**Option 2: Serverless Function**
-Create API endpoint in `src/routes/api/contact/+server.ts`
-
-## 📊 Performance
-
-- Lighthouse Score: >90
-- Fast initial load time: <3s
-- Optimized bundle size
-- Lazy loading where applicable
-- SEO-friendly with semantic HTML
-
-## 🤝 Support
-
-For issues or questions:
-- Email: yihao.dong@outlook.com
-- Check SvelteKit docs: https://kit.svelte.dev/docs
-- Tailwind CSS docs: https://tailwindcss.com/docs
-
-## 📜 License
-
-This project is created for personal academic use by Yihao Dong.
-
----
-
-**Built with** ❤️ **using SvelteKit and Tailwind CSS**
-
-Last Updated: October 2025
+- Every animation checks `prefers-reduced-motion` (hero field, reveals, view
+  transitions, demos).
+- Demos use native `<input type="range">` and radio groups; captions are
+  `aria-live`.
+- The semester grid is a real `<table>` with row/column headers.
+- Braille ornaments are real Grade 1 Braille with an `aria-label`.
+- Colour contrast: all text tokens meet WCAG AA on both paper tones in both
+  themes; the bright `accent` is only used for marks, never for body text.

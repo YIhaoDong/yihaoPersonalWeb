@@ -1,247 +1,163 @@
 <script lang="ts">
-	import { technicalSkills, professionalSkills } from '$lib/data/skills';
 	import SEO from '$lib/components/SEO.svelte';
+	import SectionHead from '$lib/components/SectionHead.svelte';
+	import Braille from '$lib/components/Braille.svelte';
+	import { reveal } from '$lib/actions/reveal';
+	import { site } from '$lib/site';
+	import { awards, service } from '$lib/data/awards';
+	import { toolbox } from '$lib/data/skills';
+	import profileImg from '$lib/assets/card_profileImage.jpeg';
 
-	const education = [
-		{
-			degree: 'Doctor of Philosophy',
-			institution: 'The University of Sydney',
-			department: 'Computer Science (Human-Computer Interaction)',
-			period: 'July 2024 - July 2028 (Expected)',
-			supervisor: 'Dr. Anusha Withana',
-			thesis: 'Sensory Augmentation for Vision Impairment through Haptics',
-			description: 'Researching sensory augmentation to help people with vision impairment understand the environment through haptics, focusing on assistive technology and multisensory perception.'
-		},
-		{
-			degree: 'Bachelor of Advanced Computing (Honours)',
-			institution: 'The University of Sydney',
-			period: '2019 - 2024',
-			honours: 'Honours Class I',
-			major: 'Information Systems (Engineering)',
-			description: 'Focused on Human-Computer Interaction with a strong foundation in software engineering, data management, and usability engineering.'
-		},
-		{
-			degree: 'Bachelor of Commerce',
-			institution: 'The University of Sydney',
-			period: '2019 - 2024',
-			major: 'Business Information Systems',
-			description: 'Developed expertise in business process analysis, information systems strategy, and the intersection of technology and business.'
-		}
-	];
-
-	const languages = [
-		{ language: 'English', proficiency: 'Professional Working' },
-		{ language: 'Chinese, Mandarin', proficiency: 'Native' }
+	const path = [
+		{ year: '2019', title: 'Started a double degree at the University of Sydney', detail: 'Bachelor of Advanced Computing (Information Systems, Engineering) and Bachelor of Commerce (Business Information Systems).' },
+		{ year: '2023', title: 'First tutorials', detail: 'Began tutoring Data and Information Management as a casual academic.' },
+		{ year: '2024', title: 'Graduated, Honours Class I', detail: 'Honours in Human-Computer Interaction; Undergraduate High Honour Roll.' },
+		{ year: '2024', title: 'PhD begins at the aid-lab', detail: `July. Supervised by ${site.supervisor}, supported by a Faculty of Engineering Research Scholarship.` },
+		{ year: '2025', title: 'First first-author paper', detail: 'Just Before Touch at Augmented Humans ’25; CHI ’25 Honorable Mention as co-author; Best Early PhD Project at the School showcase.' },
+		{ year: '2025', title: 'Associate Lecturer', detail: 'October. PhD Teaching Fellow, teaching COMP9001 and COMP9123.' },
+		{ year: '2026', title: 'Two papers at CHI ’26', detail: 'TactDeform (first author) and SRL Proxemics, presented in Barcelona.' },
+		{ year: '2028', title: 'PhD, expected', detail: 'July.' }
 	];
 </script>
 
 <SEO
-	title="About - Yihao Dong"
-	description="Learn about Yihao Dong, PhD candidate in HCI at the University of Sydney — background in Advanced Computing and Commerce, researching haptics and sensory augmentation."
+	title="About · Yihao Dong"
+	description="Yihao Dong: PhD candidate in HCI at the University of Sydney, with a background in Advanced Computing and Commerce, researching haptics and sensory augmentation."
 	path="/about"
 	page="About"
 />
 
-<!-- Page Header -->
-<section class="bg-gradient-to-br from-blue-50 to-white py-16 border-b border-blue-100">
-	<div class="section-container">
-		<h1 class="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-6">
-			About Me
-		</h1>
-		<div class="flex justify-center gap-4">
-			<a href="/CV_Yihao_Dong.pdf" target="_blank" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors font-semibold shadow-md flex items-center text-sm">
-				<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-				</svg>
-				Download Full CV (PDF)
-			</a>
-			<a href="https://scholar.google.com/citations?user=y9KUBZAAAAAJ" target="_blank" class="bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-gray-50 transition-colors font-semibold border border-gray-300 shadow-sm flex items-center text-sm">
-				Google Scholar
-			</a>
+<section class="wrap pb-16 pt-16 sm:pt-24">
+	<p class="eyebrow"><span class="text-accent-ink">04</span> — About</p>
+	<div class="mt-6 grid gap-10 lg:grid-cols-12 lg:gap-16">
+		<div class="lg:col-span-7">
+			<h1 class="display text-[clamp(2.6rem,7vw,5.6rem)] text-ink">
+				Yihao Dong, <em class="italic">in a few paragraphs</em>
+			</h1>
+			<div class="prose-t mt-10 max-w-measure">
+				<p>
+					I grew up speaking Mandarin and now live and work in Sydney, where I've spent the better part
+					of a decade at the University of Sydney: first as an undergraduate juggling a computing degree
+					with a commerce one, then as a tutor, and since July 2024 as a PhD candidate in the
+					<a href={site.labUrl} target="_blank" rel="noopener noreferrer">aid-lab</a> with <a href={site.supervisorUrl} target="_blank" rel="noopener noreferrer">{site.supervisor}</a>.
+				</p>
+				<p>
+					My research is about <em>touch as a channel for spatial information</em>. Sighted people take in
+					the layout of a room in a glance; I'm interested in what a wearable haptic interface would have
+					to do to offer something comparable to someone who cannot see, and in the perceptual questions
+					underneath that: how skin encodes shape, how early a cue can arrive and still feel like part of
+					a touch, and how much of this the brain will learn to use.
+				</p>
+				<p>
+					The commerce half of my degree shows up more than I expected. I care about whether a thing is
+					usable and worth building, not only whether it works, and I like the parts of research that
+					involve sitting with people and finding out what they need.
+				</p>
+			</div>
+			<div class="mt-8 flex flex-wrap gap-3">
+				<a href={site.cv} target="_blank" rel="noopener" class="btn btn-solid">CV (PDF)</a>
+				<a href="/contact" class="btn btn-ghost">Get in touch</a>
+			</div>
 		</div>
+		<figure class="lg:col-span-4 lg:col-start-9" use:reveal>
+			<div class="aspect-[4/5] overflow-hidden border border-line bg-paper-2">
+				<img
+					src={profileImg}
+					alt="Portrait of Yihao Dong."
+					width="1772"
+					height="1772"
+					class="h-full w-full object-cover object-top"
+					loading="eager"
+				/>
+			</div>
+			<figcaption class="mt-3 flex items-center justify-between font-mono text-[0.7rem] uppercase tracking-[0.14em] text-ink-3">
+				<span>Sydney · 2026</span>
+				<span class="flex items-center gap-2 text-ink">
+					<Braille text="hello" size={4} />
+					<span>“hello”</span>
+				</span>
+			</figcaption>
+		</figure>
 	</div>
 </section>
 
-<!-- Biography -->
-<section class="section-container">
-	<div class="max-w-5xl mx-auto flex flex-col lg:flex-row gap-12">
-		<div class="lg:w-2/3">
-			<h2 class="text-3xl font-bold text-gray-900 mb-6">Biography</h2>
-			<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
-				<p class="mb-4">
-					I am currently pursuing a PhD in the Department of Computer Science at the University of Sydney,
-					under the supervision of <strong>Dr. Anusha Withana</strong> at the <strong>aid-lab</strong>. 
-					My doctoral research focuses on sensory augmentation, helping people with vision impairment 
-					to understand the environment through haptics.
-				</p>
-				<p class="mb-4">
-					My academic journey began with a unique dual degree program, earning both a <strong>Bachelor of Advanced
-					Computing (Honours Class I)</strong> and a <strong>Bachelor of Commerce</strong> from the University of Sydney. This
-					interdisciplinary background allows me to approach research problems from both technical and
-					human-centered perspectives.
-				</p>
-				<p class="mb-4">
-					Throughout my studies, I developed a strong interest in how assistive technologies can transform 
-					human-computer interaction. My work investigates how we can leverage haptic feedback and 
-					sensory augmentation to create more accessible and intuitive experiences for people with vision impairment.
-				</p>
-				<p>
-					Beyond research, I am a passionate educator, teaching courses ranging from data management 
-					to usability engineering, helping students bridge the gap between technical implementation 
-					and user-centered design.
-				</p>
-			</div>
-		</div>
+<!-- Path -->
+<section class="border-t border-line bg-paper-2/60" aria-labelledby="path-title">
+	<div class="wrap section">
+		<SectionHead index="01" label="The path" />
+		<h2 id="path-title" class="sr-only">Timeline</h2>
+		<ol class="mt-10 border-l border-line">
+			{#each path as step, i}
+				<li use:reveal={{ delay: Math.min(i * 40, 200) }} class="relative grid gap-2 py-5 pl-8 sm:grid-cols-[6rem_1fr] sm:gap-8">
+					<span
+						class="absolute -left-[5px] top-[1.75rem] h-[9px] w-[9px] rounded-full {i === path.length - 1 ? 'border-2 border-accent bg-paper' : 'bg-accent'}"
+						aria-hidden="true"
+					></span>
+					<p class="display text-2xl text-ink">{step.year}</p>
+					<div>
+						<h3 class="text-lg leading-snug text-ink">{step.title}</h3>
+						<p class="mt-1 max-w-measure text-[0.95rem] leading-relaxed text-ink-2">{step.detail}</p>
+					</div>
+				</li>
+			{/each}
+		</ol>
+	</div>
+</section>
 
-		<!-- Interdisciplinary Highlight Card -->
-		<div class="lg:w-1/3">
-			<div class="bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-8 rounded-2xl shadow-xl">
-				<h3 class="text-xl font-bold mb-4 flex items-center">
-					<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-					</svg>
-					Unique Perspective
-				</h3>
-				<p class="text-blue-50 leading-relaxed mb-6">
-					With a dual background in <strong>Advanced Computing</strong> and <strong>Commerce</strong>, I bridge the gap between deep technical implementation and human-centered business value.
-				</p>
-				<ul class="space-y-3 text-sm">
-					<li class="flex items-center">
-						<svg class="w-4 h-4 mr-2 text-blue-300" fill="currentColor" viewBox="0 0 20 20">
-							<path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
-						</svg>
-						Technical Feasibility
-					</li>
-					<li class="flex items-center">
-						<svg class="w-4 h-4 mr-2 text-blue-300" fill="currentColor" viewBox="0 0 20 20">
-							<path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
-						</svg>
-						User-Centered Design
-					</li>
-					<li class="flex items-center">
-						<svg class="w-4 h-4 mr-2 text-blue-300" fill="currentColor" viewBox="0 0 20 20">
-							<path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
-						</svg>
-						Strategic Business Value
-					</li>
+<!-- Awards & service -->
+<section class="border-t border-line" aria-labelledby="awards-title">
+	<div class="wrap section">
+		<SectionHead index="02" label="Recognition & service" />
+		<h2 id="awards-title" class="sr-only">Awards and service</h2>
+		<div class="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-16">
+			<div use:reveal>
+				<h3 class="eyebrow">Awards</h3>
+				<ul class="mt-4 divide-y divide-line border-y border-line">
+					{#each awards as a}
+						<li class="grid grid-cols-[5rem_1fr] gap-4 py-4">
+							<span class="font-mono text-xs tabular text-ink-3">{a.year}</span>
+							<div>
+								<p class="text-ink">{a.title}</p>
+								<p class="text-[0.88rem] text-ink-3">{a.detail}</p>
+							</div>
+						</li>
+					{/each}
+				</ul>
+			</div>
+			<div use:reveal={{ delay: 80 }}>
+				<h3 class="eyebrow">Service</h3>
+				<ul class="mt-4 divide-y divide-line border-y border-line">
+					{#each service as s}
+						<li class="py-4">
+							<p class="text-ink">{s.role}</p>
+							<p class="text-[0.88rem] text-ink-3">{s.where}</p>
+						</li>
+					{/each}
 				</ul>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- Education Timeline -->
-<section class="bg-gray-50 py-16">
-	<div class="section-container">
-		<h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Education</h2>
-		<div class="max-w-4xl mx-auto space-y-8">
-			{#each education as edu}
-				<div class="bg-white rounded-lg shadow-md p-6 md:p-8 hover:shadow-lg transition-shadow border-l-4 border-blue-600">
-					<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-						<div class="flex-1">
-							<h3 class="text-2xl font-bold text-gray-900 mb-2">
-								{edu.degree}
-							</h3>
-							<p class="text-lg text-blue-600 font-semibold mb-1">
-								{edu.institution}
-							</p>
-							{#if edu.department}
-								<p class="text-gray-600 mb-1">
-									{edu.department}
-								</p>
-							{/if}
-							{#if edu.supervisor}
-								<p class="text-gray-700 font-medium mb-1">
-									Supervisor: <span class="text-gray-900">{edu.supervisor}</span>
-								</p>
-							{/if}
-							{#if edu.honours}
-								<p class="text-gray-700 font-medium">
-									{edu.honours}
-								</p>
-							{/if}
-							{#if edu.major}
-								<p class="text-gray-700">
-									Major: {edu.major}
-								</p>
-							{/if}
-						</div>
-						<div class="text-gray-600 font-medium mt-2 md:mt-0">
-							{edu.period}
-						</div>
-					</div>
-					{#if edu.thesis}
-						<p class="text-gray-700 mb-2">
-							<span class="font-semibold">Thesis:</span> {edu.thesis}
-						</p>
-					{/if}
-					<p class="text-gray-600">
-						{edu.description}
-					</p>
+<!-- Toolbox -->
+<section class="border-t border-line" aria-labelledby="tools-title">
+	<div class="wrap section">
+		<SectionHead index="03" label="Toolbox" />
+		<h2 id="tools-title" class="sr-only">Skills and tools</h2>
+		<div class="mt-10 grid gap-10 md:grid-cols-3">
+			{#each toolbox as group, i}
+				<div use:reveal={{ delay: i * 60 }}>
+					<h3 class="display text-2xl text-ink">{group.label}</h3>
+					<ul class="mt-4 space-y-2 border-t border-line pt-4">
+						{#each group.items as item}
+							<li class="text-[0.95rem] text-ink-2">{item}</li>
+						{/each}
+					</ul>
 				</div>
 			{/each}
 		</div>
-	</div>
-</section>
-
-<!-- Skills -->
-<section class="section-container">
-	<div class="max-w-5xl mx-auto">
-		<h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Skills & Expertise</h2>
-
-		<!-- Technical Skills -->
-		<div class="mb-12">
-			<h3 class="text-2xl font-bold text-gray-900 mb-6">Technical Skills</h3>
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-				{#each technicalSkills as category}
-					<div class="card">
-						<h4 class="text-lg font-bold text-gray-900 mb-3">
-							{category.category}
-						</h4>
-						<div class="flex flex-wrap gap-2">
-							{#each category.skills as skill}
-								<span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-md text-sm font-medium">
-									{skill}
-								</span>
-							{/each}
-						</div>
-					</div>
-				{/each}
-			</div>
-		</div>
-
-		<!-- Professional Skills -->
-		<div>
-			<h3 class="text-2xl font-bold text-gray-900 mb-6">Professional Skills</h3>
-			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-				{#each professionalSkills as skill}
-					<div class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-sm">
-						<svg class="w-6 h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-						</svg>
-						<span class="text-gray-700 font-medium">{skill}</span>
-					</div>
-				{/each}
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Languages -->
-<section class="bg-gray-50 py-16">
-	<div class="section-container">
-		<h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Languages</h2>
-		<div class="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
-			{#each languages as lang}
-				<div class="bg-white rounded-lg shadow-md p-6 text-center">
-					<h3 class="text-xl font-bold text-gray-900 mb-2">
-						{lang.language}
-					</h3>
-					<p class="text-gray-600">
-						{lang.proficiency}
-					</p>
-				</div>
-			{/each}
-		</div>
+		<p class="mt-12 font-mono text-xs uppercase tracking-[0.14em] text-ink-3">
+			Languages · English · Mandarin Chinese
+		</p>
 	</div>
 </section>

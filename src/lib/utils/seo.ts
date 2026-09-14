@@ -1,5 +1,7 @@
-export const BASE_URL = 'https://yihaodong.me';
-export const SITE_NAME = 'Yihao Dong';
+import { site } from '$lib/site';
+
+export const BASE_URL = site.url;
+export const SITE_NAME = site.name;
 
 export function ogImageUrl(page: string): string {
 	return `${BASE_URL}/og-image?page=${encodeURIComponent(page)}`;
@@ -8,17 +10,17 @@ export function ogImageUrl(page: string): string {
 export const personSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Person',
-	name: 'Yihao Dong',
+	name: site.name,
 	jobTitle: 'PhD Candidate',
 	affiliation: {
 		'@type': 'Organization',
-		name: 'The University of Sydney',
-		department: 'aid-lab, Department of Computer Science'
+		name: site.university,
+		department: 'aid-lab, School of Computer Science'
 	},
 	alumniOf: [
 		{
 			'@type': 'EducationalOrganization',
-			name: 'The University of Sydney'
+			name: site.university
 		}
 	],
 	knowsAbout: [
@@ -29,12 +31,13 @@ export const personSchema = {
 		'Accessibility',
 		'Assistive Technology'
 	],
-	email: 'yihao.dong@outlook.com',
+	email: site.email,
+	sameAs: site.profiles.map((p) => p.href),
 	address: {
 		'@type': 'PostalAddress',
 		addressLocality: 'Sydney',
 		addressRegion: 'NSW',
-		postalCode: '2000',
+		postalCode: '2008',
 		addressCountry: 'AU'
 	},
 	url: BASE_URL

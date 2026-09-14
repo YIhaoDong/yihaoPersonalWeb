@@ -12,7 +12,8 @@ This document provides instructions and context for Gemini CLI when working on t
     *   **Deployment:** Vercel (using `@sveltejs/adapter-vercel`)
 *   **Architecture:**
     *   **Routing:** File-based routing in `src/routes/`.
-    *   **Data Management:** Content is managed through static TypeScript files in `src/lib/data/` (e.g., `publications.ts`, `courses.ts`).
+    *   **Data Management:** Content is managed through static TypeScript files in `src/lib/data/` (`publications.ts`, `news.ts`, `courses.ts`, `awards.ts`, `skills.ts`) and personal details in `src/lib/site.ts`.
+*   **Design system:** See `DESIGN.md`. Colour tokens are CSS variables in `src/app.css` exposed to Tailwind as `paper`, `ink`, `line`, `accent` etc. The site is light-only (no dark theme). Fonts are self-hosted via `@fontsource` (Fraunces, Instrument Sans, IBM Plex Mono).
     *   **Components:** Reusable UI components are located in `src/lib/components/`.
     *   **SEO:** Centralized SEO logic and schema.org metadata in `src/lib/utils/seo.ts`.
 
@@ -27,10 +28,11 @@ This document provides instructions and context for Gemini CLI when working on t
 ## Development Conventions
 
 *   **Svelte 5:** Use Svelte 5 runes (`$state`, `$props`, `$derived`, etc.) for reactivity and component logic.
-*   **Styling:** Use Tailwind CSS utility classes. Custom font families (`sans: Inter`, `serif: Merriweather`) are configured in `tailwind.config.js`.
+*   **Styling:** Use Tailwind CSS utility classes with the token colours (`bg-paper`, `text-ink-2`, `border-line`, `text-accent-ink`). Never hard-code greys or blues. Font families: `font-display` (Fraunces), `font-sans` (Instrument Sans), `font-mono` (IBM Plex Mono). Use `.display` for large serif headings and `.eyebrow` for mono labels.
+*   **Motion:** Any animation must respect `prefers-reduced-motion`. Use the `reveal` action from `$lib/actions/reveal` for scroll reveals.
 *   **Content Updates:** 
     *   Modify `src/lib/data/*.ts` files to update publications, courses, projects, and skills.
-    *   Update personal information in `src/lib/utils/seo.ts`, `src/lib/components/Footer.svelte`, and `src/routes/contact/+page.svelte`.
+    *   Update personal information in `src/lib/site.ts` (used by the footer, contact page, card, vCard and SEO schema).
 *   **SEO:** Every page should use the `generateSEOTags` utility from `$lib/utils/seo` within a `<svelte:head>` block if page-specific SEO is needed.
 *   **Icons:** Favicons and other static assets are in `static/` or `$lib/assets/`.
 

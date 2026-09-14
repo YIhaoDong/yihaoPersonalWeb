@@ -1,225 +1,232 @@
 <script lang="ts">
-	import { researchInterests } from '$lib/data/skills';
-	import tactDeformImg from '$lib/assets/research/TactDeform.png';
-	import justBeforeTouchImg from '$lib/assets/research/Ahs-JustBeforeTouch.png';
 	import SEO from '$lib/components/SEO.svelte';
+	import SectionHead from '$lib/components/SectionHead.svelte';
+	import TactDeformDemo from '$lib/components/demos/TactDeformDemo.svelte';
+	import JustBeforeTouchDemo from '$lib/components/demos/JustBeforeTouchDemo.svelte';
+	import Braille from '$lib/components/Braille.svelte';
+	import { reveal } from '$lib/actions/reveal';
+	import { publications } from '$lib/data/publications';
+	import { researchInterests } from '$lib/data/skills';
+	import { site } from '$lib/site';
 
-	const researchAreas = [
-		{
-			title: 'Sensory Augmentation',
-			description: 'Investigating how wearable technologies can expand human perception, particularly for individuals with sensory impairments.',
-			icon: 'M13 10V3L4 14h7v7l9-11h-7z'
-		},
-		{
-			title: 'Haptic Feedback',
-			description: 'Exploring tactile and vibrotactile feedback mechanisms to communicate environmental information and enhance spatial awareness.',
-			icon: 'M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11'
-		},
-		{
-			title: 'Assistive Technology',
-			description: 'Designing and developing interactive systems that empower people with vision impairment to navigate and understand their surroundings.',
-			icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z'
-		},
-		{
-			title: 'Multisensory Perception',
-			description: 'Studying how the brain integrates information from different senses and how to leverage this for effective sensory substitution.',
-			icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z'
-		}
+	const tactdeform = publications.find((p) => p.project === 'tactdeform')!;
+	const jbt = publications.find((p) => p.project === 'just-before-touch')!;
+	const collaborations = publications.filter((p) => !p.isFirstAuthor);
+
+	const objectives = [
+		'Design haptic metaphors that communicate spatial information intuitively.',
+		'Build wearable sensory-augmentation systems that survive real-world navigation.',
+		'Measure how people adapt to sensory substitution over time, not just in a first session.',
+		'Turn the findings into design guidelines for accessible multisensory interfaces.'
 	];
-
-	const thesisOverview = {
-		title: 'Sensory Augmentation for Vision Impairment through Haptics',
-		overview: 'My doctoral research investigates how sensory augmentation and haptic feedback can help people with vision impairment understand their environment. The work focuses on developing wearable systems that translate visual and spatial information into intuitive tactile sensations, enabling more independent navigation and interaction.',
-		objectives: [
-			'Design intuitive haptic metaphors for communicating spatial information',
-			'Develop wearable sensory augmentation systems for real-world navigation',
-			'Investigate the long-term cognitive impact of using sensory substitution devices',
-			'Establish design guidelines for accessible multisensory interfaces'
-		],
-		methodology: [
-			'User-centered design with the vision impairment community',
-			'Qualitative interviews and field studies',
-			'Iterative prototyping of wearable haptic devices',
-			'Quantitative evaluation of spatial awareness and navigation performance'
-		]
-	};
+	const methods = [
+		'User-centred design with the vision-impairment community.',
+		'Qualitative interviews and field studies.',
+		'Iterative prototyping of wearable haptic hardware.',
+		'Quantitative evaluation of spatial awareness and navigation performance.'
+	];
 </script>
 
 <SEO
-	title="Research - Yihao Dong"
-	description="Explore Yihao Dong's research in sensory augmentation, haptic feedback, and assistive technology for vision impairment at the University of Sydney."
+	title="Research · Yihao Dong"
+	description="Haptics, sensory augmentation and assistive technology for people with vision impairment. Try interactive sketches of TactDeform and Just Before Touch."
 	path="/research"
 	page="Research"
 />
 
-<!-- Page Header -->
-<section class="bg-gradient-to-br from-blue-50 to-white py-16">
-	<div class="section-container">
-		<h1 class="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-4">
-			Research
-		</h1>
-		<p class="text-xl text-gray-600 text-center max-w-3xl mx-auto">
-			Advancing Human-Computer Interaction through Sensory Augmentation and Assistive Technologies
+<!-- Title -->
+<section class="wrap pb-16 pt-16 sm:pt-24">
+	<p class="eyebrow"><span class="text-accent-ink">01</span> — Research</p>
+	<h1 class="display mt-6 max-w-4xl text-[clamp(2.6rem,7vw,5.6rem)] text-ink">
+		Can touch carry what sight usually does?
+	</h1>
+	<div class="mt-10 grid gap-8 lg:grid-cols-12">
+		<p class="prose-t lg:col-span-7">
+			That is the question my PhD keeps returning to. People with vision impairment build a
+			picture of a room from sound, memory and the tip of a cane. I want to add a channel: wearable
+			haptic interfaces that render the <em>shape</em> of nearby space on the skin, clearly enough to
+			act on and quietly enough to wear all day. Getting there runs through skin mechanics, wearable
+			hardware and a great many user studies.
 		</p>
-	</div>
-</section>
-
-<!-- Research Vision -->
-<section class="section-container pb-0">
-	<div class="max-w-4xl mx-auto text-center">
-		<blockquote class="text-2xl md:text-3xl font-serif italic text-blue-800 leading-relaxed mb-8">
-			"I aim to empower individuals with sensory impairments by creating intuitive, 
-			haptic-based sensory augmentation systems that bridge the gap between the environment and perception."
-		</blockquote>
-		<div class="w-24 h-1 bg-blue-600 mx-auto"></div>
-	</div>
-</section>
-
-<!-- Featured Projects -->
-<section class="section-container">
-	<div class="max-w-6xl mx-auto">
-		<h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Featured Research Projects</h2>
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-			<!-- Project 1 -->
-			<a href="/publications#pub-1" class="group block cursor-pointer">
-				<div class="relative overflow-hidden rounded-2xl shadow-lg mb-6 bg-gray-100 aspect-video flex items-center justify-center border border-gray-100">
-					<img src={tactDeformImg} alt="TactDeform System" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-					<div class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-						CHI '26
-					</div>
+		<div class="lg:col-span-4 lg:col-start-9">
+			<dl class="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-5 text-sm">
+				<div>
+					<dt class="eyebrow">Lab</dt>
+					<dd class="mt-1 text-ink"><a href={site.labUrl} class="link" target="_blank" rel="noopener noreferrer">{site.lab}</a></dd>
 				</div>
-				<h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">TactDeform</h3>
-				<p class="text-gray-700 leading-relaxed mb-4">
-					Finger pad deformation inspired spatial tactile feedback for virtual geometry exploration.
-					A system that mimics the natural deformation of the finger pad to provide high-fidelity haptic sensations.
-				</p>
-			</a>
-
-			<!-- Project 2 -->
-			<a href="/publications#pub-3" class="group block cursor-pointer">
-				<div class="relative overflow-hidden rounded-2xl shadow-lg mb-6 bg-gray-100 aspect-video flex items-center justify-center border border-gray-100">
-					<img src={justBeforeTouchImg} alt="Just Before Touch System" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-					<div class="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-						AHs '25
-					</div>
+				<div>
+					<dt class="eyebrow">Supervisor</dt>
+					<dd class="mt-1 text-ink"><a href={site.supervisorUrl} target="_blank" rel="noopener noreferrer" class="link">{site.supervisor}</a></dd>
 				</div>
-				<h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Just Before Touch</h3>
-				<p class="text-gray-700 leading-relaxed mb-4">
-					Manipulating perceived haptic sensations through proactive vibrotactile cues.
-					Using anticipatory feedback to "prime" the user's nervous system before actual physical contact.
-				</p>
-			</a>
+				<div>
+					<dt class="eyebrow">Started</dt>
+					<dd class="mt-1 text-ink">July 2024</dd>
+				</div>
+				<div>
+					<dt class="eyebrow">Expected</dt>
+					<dd class="mt-1 text-ink">July 2028</dd>
+				</div>
+			</dl>
 		</div>
 	</div>
 </section>
 
-<!-- PhD Thesis Overview -->
-<section class="section-container">
-	<div class="max-w-4xl mx-auto">
-		<h2 class="text-3xl font-bold text-gray-900 mb-6">PhD Thesis</h2>
-		<div class="card bg-blue-50 border-l-4 border-blue-600">
-			<h3 class="text-2xl font-bold text-gray-900 mb-4">
-				{thesisOverview.title}
-			</h3>
-			<p class="text-gray-700 leading-relaxed mb-6">
-				{thesisOverview.overview}
-			</p>
-
-			<div class="grid md:grid-cols-2 gap-6">
-				<div>
-					<h4 class="text-lg font-bold text-gray-900 mb-3">Research Objectives</h4>
-					<ul class="space-y-2">
-						{#each thesisOverview.objectives as objective}
-							<li class="flex items-start">
-								<svg class="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-								</svg>
-								<span class="text-gray-700">{objective}</span>
-							</li>
-						{/each}
-					</ul>
-				</div>
-
-				<div>
-					<h4 class="text-lg font-bold text-gray-900 mb-3">Methodology</h4>
-					<ul class="space-y-2">
-						{#each thesisOverview.methodology as method}
-							<li class="flex items-start">
-								<svg class="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-								</svg>
-								<span class="text-gray-700">{method}</span>
-							</li>
-						{/each}
-					</ul>
-				</div>
+<!-- Thesis -->
+<section class="wrap section pt-0" aria-labelledby="thesis-title">
+	<SectionHead index="02" label="The thesis" />
+	<div class="split mt-10">
+		<div>
+			<h2 id="thesis-title" class="display text-[1.75rem] leading-tight text-ink">
+				Sensory augmentation for vision impairment through haptics
+			</h2>
+			<div class="mt-6 flex items-center gap-3 text-ink">
+				<Braille text="shape" size={5} />
+				<span class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-ink-3">“shape”</span>
+			</div>
+		</div>
+		<div class="grid gap-10 sm:grid-cols-2">
+			<div use:reveal>
+				<h3 class="eyebrow">What I'm trying to do</h3>
+				<ol class="mt-4 space-y-3">
+					{#each objectives as o, i}
+						<li class="grid grid-cols-[1.6rem_1fr] gap-2 text-[0.95rem] leading-relaxed text-ink-2">
+							<span class="font-mono text-xs text-accent-ink">0{i + 1}</span>
+							<span>{o}</span>
+						</li>
+					{/each}
+				</ol>
+			</div>
+			<div use:reveal={{ delay: 80 }}>
+				<h3 class="eyebrow">How</h3>
+				<ul class="mt-4 space-y-3">
+					{#each methods as m}
+						<li class="grid grid-cols-[1.6rem_1fr] gap-2 text-[0.95rem] leading-relaxed text-ink-2">
+							<span class="mt-[0.55em] h-1.5 w-1.5 rounded-full bg-accent"></span>
+							<span>{m}</span>
+						</li>
+					{/each}
+				</ul>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- Research Areas -->
-<section class="bg-gray-50 py-16">
-	<div class="section-container">
-		<h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Research Areas</h2>
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-			{#each researchAreas as area}
-				<div class="card hover:scale-105 transition-transform duration-300">
-					<div class="flex items-start space-x-4">
-						<div class="bg-blue-100 p-3 rounded-lg flex-shrink-0">
-							<svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={area.icon} />
-							</svg>
-						</div>
+<!-- TactDeform -->
+<section id="tactdeform" class="scroll-mt-24 border-t border-line bg-paper-2/60" aria-labelledby="td-title">
+	<div class="wrap section">
+		<SectionHead index="03" label="Project">
+			{#snippet aside()}
+				<a href="/publications#pub-{tactdeform.id}" class="link text-sm">{tactdeform.venueShort} · paper</a>
+			{/snippet}
+		</SectionHead>
+		<div class="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-14">
+			<div class="lg:col-span-5">
+				<h2 id="td-title" class="display text-[clamp(2.2rem,5vw,3.6rem)] text-ink">TactDeform</h2>
+				<p class="mt-3 text-lg leading-snug text-ink">Finger-pad deformation as a design language for spatial tactile feedback.</p>
+				<div class="prose-t mt-6">
+					<p>
+						When you run a finger over a cube, your skin does different things at a face, an edge and a
+						corner. Vibration motors flatten all of that into a buzz. TactDeform parametrically emulates
+						the <em>deformation</em> of the finger pad on a high-density electro-tactile array, so virtual
+						geometry can be explored by touch: faces spread, edges draw a line that widens, corners stay
+						sharp, and textures slide past in 2 mm steps.
+					</p>
+					<p>
+						Try it. Pick a feature, then press in or slide along.
+					</p>
+				</div>
+				<p class="mt-6 text-sm text-ink-2">{tactdeform.authors}</p>
+				<div class="mt-5 flex flex-wrap gap-3">
+					<a href="https://doi.org/{tactdeform.doi}" target="_blank" rel="noopener noreferrer" class="btn btn-solid">Read the paper</a>
+					<a href="/publications#pub-{tactdeform.id}" class="btn btn-ghost">Cite</a>
+				</div>
+			</div>
+			<div class="lg:col-span-7" use:reveal>
+				<TactDeformDemo />
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Just Before Touch -->
+<section id="just-before-touch" class="scroll-mt-24 border-t border-line" aria-labelledby="jbt-title">
+	<div class="wrap section">
+		<SectionHead index="04" label="Project">
+			{#snippet aside()}
+				<a href="/publications#pub-{jbt.id}" class="link text-sm">{jbt.venueShort} · paper</a>
+			{/snippet}
+		</SectionHead>
+		<div class="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-14">
+			<div class="lg:order-2 lg:col-span-5">
+				<h2 id="jbt-title" class="display text-[clamp(2.2rem,5vw,3.6rem)] text-ink">Just Before Touch</h2>
+				<p class="mt-3 text-lg leading-snug text-ink">Proactive haptics: a cue that arrives before the contact does.</p>
+				<div class="prose-t mt-6">
+					<p>
+						Haptic feedback in VR is almost always reactive: you touch, then you feel. We asked what
+						happens if the vibration arrives a little <em>early</em>. A short vibrotactile cue about 100 ms
+						before visual contact, with the right amplitude envelope, changes the perceived material of the
+						contact. It is a cheap, actuator-free way to widen the range of sensations a controller can give.
+					</p>
+					<p>Set the lead time and the envelope, then play. On phones that support it, the cue really vibrates.</p>
+				</div>
+				<p class="mt-6 text-sm text-ink-2">{jbt.authors}</p>
+				<div class="mt-5 flex flex-wrap gap-3">
+					<a href="https://doi.org/{jbt.doi}" target="_blank" rel="noopener noreferrer" class="btn btn-solid">Read the paper</a>
+					{#if jbt.code}
+						<a href={jbt.code} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Code</a>
+					{/if}
+				</div>
+			</div>
+			<div class="lg:order-1 lg:col-span-7" use:reveal>
+				<JustBeforeTouchDemo />
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Collaborations -->
+<section class="border-t border-line" aria-labelledby="collab-title">
+	<div class="wrap section">
+		<SectionHead index="05" label="With collaborators" />
+		<div class="split mt-10">
+			<div>
+				<h2 id="collab-title" class="display text-[1.75rem] leading-tight text-ink">Extra limbs and shared bodies</h2>
+				<p class="mt-4 text-[0.95rem] leading-relaxed text-ink-2">
+					A second strand of work in the lab, led by Hongyu Zhou, asks how people control and share
+					supernumerary robotic limbs in VR. I contribute to study design and analysis.
+				</p>
+			</div>
+			<ul class="divide-y divide-line border-y border-line">
+				{#each collaborations as p}
+					<li class="grid gap-2 py-5 sm:grid-cols-[6rem_1fr] sm:gap-6">
+						<p class="font-mono text-xs uppercase tracking-[0.14em] text-ink-3">
+							{p.venueShort}
+							{#if p.award}<span class="mt-1 block text-accent-ink">{p.award}</span>{/if}
+						</p>
 						<div>
-							<h3 class="text-xl font-bold text-gray-900 mb-2">
-								{area.title}
-							</h3>
-							<p class="text-gray-600">
-								{area.description}
-							</p>
+							<h3 class="text-[1.05rem] leading-snug text-ink"><a href="/publications#pub-{p.id}" class="link">{p.title}</a></h3>
+							<p class="mt-1.5 text-[0.92rem] text-ink-2">{p.teaser}</p>
 						</div>
-					</div>
-				</div>
-			{/each}
+					</li>
+				{/each}
+			</ul>
 		</div>
 	</div>
 </section>
 
-<!-- Research Interests Tags -->
-<section class="section-container">
-	<div class="max-w-4xl mx-auto">
-		<h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Research Interests</h2>
-		<div class="flex flex-wrap justify-center gap-3">
-			{#each researchInterests as interest}
-				<span class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-md hover:shadow-lg transition-shadow">
-					{interest}
-				</span>
+<!-- Interests -->
+<section class="border-t border-line" aria-labelledby="interests-title">
+	<div class="wrap section">
+		<SectionHead index="06" label="Interests" />
+		<h2 id="interests-title" class="sr-only">Research interests</h2>
+		<p class="display mt-8 max-w-5xl text-[clamp(1.5rem,3.4vw,2.6rem)] leading-tight text-ink">
+			{#each researchInterests as ri, i}
+				<span>{ri}</span>{#if i < researchInterests.length - 1}<span class="mx-3 text-accent" aria-hidden="true">·</span>{/if}
 			{/each}
-		</div>
-	</div>
-</section>
-
-<!-- Current & Future Work -->
-<section class="bg-blue-600 text-white py-16">
-	<div class="section-container">
-		<div class="max-w-4xl mx-auto">
-			<h2 class="text-3xl font-bold mb-6 text-center">Current & Future Work</h2>
-			<p class="text-lg text-blue-100 mb-6 leading-relaxed">
-				I am currently investigating how wearable haptic devices can provide real-time spatial awareness 
-				for people with vision impairment, focusing on the design of intuitive haptic metaphors.
-				My work aims to establish a framework for effective sensory augmentation that minimizes cognitive load.
-			</p>
-			<p class="text-lg text-blue-100 leading-relaxed">
-				Future research directions include exploring the potential of multimodal sensory substitution 
-				(combining haptics and audio), longitudinal studies on neural plasticity and device adaptation, 
-				and the development of context-aware assistive systems that leverage computer vision and AI.
-			</p>
-			<div class="mt-8 text-center">
-				<a href="/publications" class="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors font-semibold inline-block shadow-lg">
-					View Publications
-				</a>
-			</div>
+		</p>
+		<div class="mt-10 flex flex-wrap items-center gap-4">
+			<a href="/publications" class="btn btn-solid">All publications</a>
+			<a href="/contact" class="link text-sm">Interested in collaborating?</a>
 		</div>
 	</div>
 </section>

@@ -1,47 +1,44 @@
-export interface SkillCategory {
-	category: string;
-	skills: string[];
+export interface ToolGroup {
+	label: string;
+	items: string[];
 }
 
-export const technicalSkills: SkillCategory[] = [
+/** What actually gets used in the lab, grouped by purpose. */
+export const toolbox: ToolGroup[] = [
 	{
-		category: 'Programming Languages',
-		skills: ['Python', 'Java', 'JavaScript', 'SQL', 'R']
+		label: 'Studying people',
+		items: [
+			'Perceptual and psychophysical user studies',
+			'Qualitative interviews and field work',
+			'Usability evaluation',
+			'Statistics in R and Python'
+		]
 	},
 	{
-		category: 'Web Development',
-		skills: ['Website Design', 'Frontend Development', 'Backend Maintenance', 'Responsive Design']
+		label: 'Building interfaces',
+		items: [
+			'Electro-tactile and vibrotactile hardware',
+			'Wearable prototyping',
+			'Unity and VR headsets',
+			'Python, TypeScript, Java, SQL'
+		]
 	},
 	{
-		category: 'Data & Analysis',
-		skills: ['Data Analysis', 'Information Management', 'Data Mining', 'Business Intelligence']
-	},
-	{
-		category: 'Research & Design',
-		skills: ['Human-Computer Interaction', 'Usability Engineering', 'User Experience Design', 'Research Methodologies']
-	},
-	{
-		category: 'Software Engineering',
-		skills: ['Algorithm Design', 'Software Architecture', 'Agile Development', 'Project Management']
+		label: 'Thinking about systems',
+		items: [
+			'Human-computer interaction and accessibility',
+			'Information systems and business analysis',
+			'Web engineering (this site is SvelteKit)'
+		]
 	}
 ];
 
-export const professionalSkills: string[] = [
-	'Working in High Performing Teams',
-	'Communication and Presentation',
-	'Time Management and Multitasking',
-	'Adaptability and Flexibility',
-	'Relationship Building and Management',
-	'Critical Thinking and Problem-Solving'
-];
-
 export const researchInterests: string[] = [
-	'Sensory Augmentation',
-	'Human-Computer Interaction',
-	'Haptic Feedback',
-	'Vision Impairment',
-	'Accessibility',
-	'Assistive Technology',
-	'Multisensory Perception',
-	'Wearable Computing'
+	'Sensory augmentation',
+	'Haptic feedback',
+	'Vision impairment and accessibility',
+	'Assistive technology',
+	'Multisensory perception',
+	'Wearable computing',
+	'Extended reality'
 ];
