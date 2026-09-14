@@ -84,7 +84,7 @@ as `paper`, `paper-2`, `ink`, `ink-2`, `ink-3`, `line`, `dot`, `accent` and
 `accent-ink` (e.g. `bg-paper`, `text-ink-2`, `border-line`). The site is
 light-only by decision; there is no dark theme.
 
-## Accessibility notes
+## Accessibility notes 
 
 - Every animation checks `prefers-reduced-motion` (hero field, reveals, view
   transitions, demos).
