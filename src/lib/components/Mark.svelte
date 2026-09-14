@@ -48,16 +48,27 @@
 	.morph {
 		transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
 	}
-	:global(.group:hover) .morph,
-	:global(.group:focus-visible) .morph {
+	@media (hover: hover) {
+		:global(.group:hover) .morph {
+			transform: rotate(-90deg);
+		}
+		:global(.group:hover) .morph .dot {
+			fill: var(--dot);
+		}
+		:global(.group:hover) .morph .dot.d {
+			fill: var(--accent);
+		}
+	}
+	:global(.group:focus-visible) .morph,
+	:global(.group.greet) .morph {
 		transform: rotate(-90deg);
 	}
-	:global(.group:hover) .morph .dot,
-	:global(.group:focus-visible) .morph .dot {
+	:global(.group:focus-visible) .morph .dot,
+	:global(.group.greet) .morph .dot {
 		fill: var(--dot);
 	}
-	:global(.group:hover) .morph .dot.d,
-	:global(.group:focus-visible) .morph .dot.d {
+	:global(.group:focus-visible) .morph .dot.d,
+	:global(.group.greet) .morph .dot.d {
 		fill: var(--accent);
 	}
 </style>

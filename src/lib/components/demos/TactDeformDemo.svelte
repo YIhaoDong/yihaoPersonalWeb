@@ -225,7 +225,7 @@
 			<div class="flex flex-wrap gap-2">
 				{#each features as f}
 					<label
-						class="cursor-pointer select-none rounded-sm border px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] transition-colors has-[:checked]:border-ink has-[:checked]:bg-ink has-[:checked]:text-paper {feature === f.id ? '' : 'border-line text-ink-2 hover:border-ink-3'}"
+						class="chip inline-flex cursor-pointer select-none items-center rounded-sm border px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] transition-colors has-[:checked]:border-ink has-[:checked]:bg-ink has-[:checked]:text-paper {feature === f.id ? '' : 'border-line text-ink-2 hover:border-ink-3'}"
 					>
 						<input type="radio" name="feature" value={f.id} bind:group={feature} class="sr-only" />
 						{f.label}

@@ -125,7 +125,7 @@
 					type="button"
 					onclick={() => (filter = c.id)}
 					aria-pressed={filter === c.id}
-					class="rounded-sm border px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] transition-colors {filter === c.id
+					class="chip rounded-sm border px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] transition-colors {filter === c.id
 						? 'border-ink bg-ink text-paper'
 						: 'border-line text-ink-2 hover:border-ink-3 hover:text-ink'}"
 				>

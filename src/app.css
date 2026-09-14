@@ -108,15 +108,19 @@
 	.link {
 		@apply text-ink underline decoration-line decoration-1 underline-offset-[5px] transition-colors duration-200;
 	}
-	.link:hover {
-		@apply text-accent-ink decoration-accent;
+	@media (hover: hover) {
+		.link:hover {
+			@apply text-accent-ink decoration-accent;
+		}
 	}
 
 	.link-quiet {
 		@apply text-ink-2 no-underline transition-colors duration-200;
 	}
-	.link-quiet:hover {
-		@apply text-accent-ink;
+	@media (hover: hover) {
+		.link-quiet:hover {
+			@apply text-accent-ink;
+		}
 	}
 
 	/* Buttons */
@@ -126,14 +130,56 @@
 	.btn-solid {
 		@apply bg-ink text-paper;
 	}
-	.btn-solid:hover {
-		@apply border-accent-ink bg-accent-ink text-paper;
+	@media (hover: hover) {
+		.btn-solid:hover {
+			@apply border-accent-ink bg-accent-ink text-paper;
+		}
+	}
+	.btn:active {
+		transform: translateY(1px);
 	}
 	.btn-ghost {
 		@apply bg-transparent text-ink;
 	}
-	.btn-ghost:hover {
-		@apply border-accent-ink text-accent-ink;
+	@media (hover: hover) {
+		.btn-ghost:hover {
+			@apply border-accent-ink text-accent-ink;
+		}
+	}
+
+	/* Images that rest in greyscale. Hover reveals colour on pointer devices;
+	   the colourOnArrive action adds .is-colour on touch devices. */
+	.tint {
+		filter: grayscale(1);
+		transition: filter 700ms cubic-bezier(0.22, 1, 0.36, 1);
+	}
+	@media (hover: hover) {
+		.group:hover .tint,
+		.group:focus-visible .tint {
+			filter: grayscale(0);
+		}
+	}
+	.tint.is-colour {
+		filter: grayscale(0);
+	}
+
+	/* Press feedback for tappable blocks */
+	.press {
+		transition: transform 160ms ease;
+	}
+	.press:active {
+		transform: scale(0.985);
+	}
+
+	/* Larger targets on touch screens */
+	@media (pointer: coarse) {
+		.btn {
+			min-height: 44px;
+			padding-block: 0.75rem;
+		}
+		.chip {
+			min-height: 44px;
+		}
 	}
 
 	/* Long-form copy */

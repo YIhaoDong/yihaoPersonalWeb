@@ -2,8 +2,24 @@
 	import { page } from '$app/state';
 	import Mark from './Mark.svelte';
 
+	import { onMount } from 'svelte';
+
 	let open = $state(false);
+	let greet = $state(false);
 	let menuButton: HTMLButtonElement | undefined = $state();
+
+	// Touch screens have no hover, so play the Y→D→Y morph once as a greeting.
+	onMount(() => {
+		const coarse = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+		const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (!coarse || reduce) return;
+		const t1 = setTimeout(() => (greet = true), 900);
+		const t2 = setTimeout(() => (greet = false), 900 + 1100);
+		return () => {
+			clearTimeout(t1);
+			clearTimeout(t2);
+		};
+	});
 
 	const nav = [
 		{ href: '/research', label: 'Research' },
@@ -48,7 +64,7 @@
 	<nav aria-label="Primary" class="wrap flex h-full items-center justify-between gap-6">
 		<a
 			href="/"
-			class="group flex items-center gap-3 font-display text-[1.35rem] leading-none text-ink"
+			class="group flex items-center gap-3 font-display text-[1.35rem] leading-none text-ink {greet ? 'greet' : ''}"
 			aria-label="Yihao Dong, home"
 		>
 			<Mark morph />
@@ -79,7 +95,7 @@
 			<button
 				bind:this={menuButton}
 				type="button"
-				class="grid h-10 w-10 place-items-center rounded-full text-ink transition-colors hover:bg-paper-2 md:hidden"
+				class="grid h-11 w-11 place-items-center rounded-full text-ink transition-colors hover:bg-paper-2 md:hidden"
 				onclick={() => (open = !open)}
 				aria-label={open ? 'Close menu' : 'Open menu'}
 				aria-expanded={open}

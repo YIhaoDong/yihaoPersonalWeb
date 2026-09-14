@@ -166,7 +166,7 @@
 				<div class="flex flex-wrap gap-2">
 					{#each ['decreasing', 'flat', 'increasing'] as p}
 						<label
-							class="cursor-pointer select-none rounded-sm border px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] transition-colors has-[:checked]:border-ink has-[:checked]:bg-ink has-[:checked]:text-paper {profile === p ? '' : 'border-line text-ink-2 hover:border-ink-3'}"
+							class="chip inline-flex cursor-pointer select-none items-center rounded-sm border px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] transition-colors has-[:checked]:border-ink has-[:checked]:bg-ink has-[:checked]:text-paper {profile === p ? '' : 'border-line text-ink-2 hover:border-ink-3'}"
 						>
 							<input type="radio" name="profile" value={p} bind:group={profile} class="sr-only" />
 							{p}

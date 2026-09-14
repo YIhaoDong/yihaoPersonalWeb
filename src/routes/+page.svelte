@@ -4,6 +4,7 @@
 	import Braille from '$lib/components/Braille.svelte';
 	import SectionHead from '$lib/components/SectionHead.svelte';
 	import { reveal } from '$lib/actions/reveal';
+	import { colourOnArrive } from '$lib/actions/colour';
 	import { site } from '$lib/site';
 	import { news, formatMonth, isUpcoming } from '$lib/data/news';
 	import { publications } from '$lib/data/publications';
@@ -109,8 +110,9 @@
 						alt="Yihao Dong, standing against a plain grey background in a dark jacket and glasses."
 						width="886"
 						height="886"
-						class="h-full w-full object-cover object-top grayscale transition-[filter] duration-700 ease-out group-hover:grayscale-0"
+						class="tint h-full w-full object-cover object-top"
 						loading="lazy"
+						use:colourOnArrive
 					/>
 				</div>
 				<figcaption class="mt-3 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-ink-3">
@@ -163,7 +165,7 @@
 				<article use:reveal class="grid items-start gap-8 lg:grid-cols-12 lg:gap-14">
 					<a
 						href="/research#{f.id}"
-						class="group block overflow-hidden border border-line bg-paper lg:col-span-7 {i % 2 ? 'lg:order-2' : ''}"
+						class="group press block overflow-hidden border border-line bg-paper lg:col-span-7 {i % 2 ? 'lg:order-2' : ''}"
 						aria-label="Try the {f.title} demo"
 					>
 						<img
@@ -172,7 +174,8 @@
 							width="1600"
 							height="900"
 							loading="lazy"
-							class="aspect-video w-full object-cover grayscale transition-[filter,transform] duration-700 ease-out group-hover:scale-[1.02] group-hover:grayscale-0 group-focus-visible:grayscale-0"
+							class="tint aspect-video w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+							use:colourOnArrive
 						/>
 					</a>
 					<div class="lg:col-span-5 {i % 2 ? 'lg:order-1' : ''}">
