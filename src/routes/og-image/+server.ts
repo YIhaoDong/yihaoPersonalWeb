@@ -62,49 +62,6 @@ function mark(size: number) {
 	};
 }
 
-/** A wide field of faint dots with a warm pressure blob, echoing the site hero. */
-function field() {
-	const cols = 30;
-	const rows = 9;
-	const cx = 24;
-	const cy = 4;
-	const dots: object[] = [];
-	for (let r = 0; r < rows; r++) {
-		for (let c = 0; c < cols; c++) {
-			const d = Math.hypot(c - cx, (r - cy) * 1.4);
-			const t = Math.max(0, 1 - d / 5);
-			const size = 6 + t * 10;
-			dots.push({
-				type: 'div',
-				props: {
-					style: {
-						width: size,
-						height: size,
-						borderRadius: '50%',
-						backgroundColor: t > 0.05 ? ACCENT : DOT,
-						opacity: t > 0.05 ? 0.35 + t * 0.65 : 1,
-						margin: `${(16 - size) / 2}px`
-					}
-				}
-			});
-		}
-	}
-	return {
-		type: 'div',
-		props: {
-			style: {
-				position: 'absolute',
-				right: 40,
-				top: 40,
-				width: cols * 24,
-				display: 'flex',
-				flexWrap: 'wrap'
-			},
-			children: dots
-		}
-	};
-}
-
 function buildElement(page: string) {
 	const isHome = page === 'Home' || page === '';
 
@@ -123,7 +80,6 @@ function buildElement(page: string) {
 				fontFamily: 'Inter'
 			},
 			children: [
-				field(),
 				{
 					type: 'div',
 					props: {
