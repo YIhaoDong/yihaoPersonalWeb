@@ -18,6 +18,7 @@
 	 */
 	import { onMount } from 'svelte';
 	import { pulse } from '$lib/utils/haptics';
+	import { onThemeChange } from '$lib/theme';
 
 	interface Props {
 		class?: string;
@@ -230,6 +231,12 @@
 		});
 		io.observe(canvas);
 
+		// The dots are painted from the theme tokens, so repaint when the theme flips.
+		const offTheme = onThemeChange(() => {
+			readColors();
+			if (!raf) draw(performance.now());
+		});
+
 		const onVisibility = () => (document.hidden ? stop() : start());
 		document.addEventListener('visibilitychange', onVisibility);
 
@@ -259,6 +266,7 @@
 
 		return () => {
 			stop();
+			offTheme();
 			ro.disconnect();
 			io.disconnect();
 			document.removeEventListener('visibilitychange', onVisibility);

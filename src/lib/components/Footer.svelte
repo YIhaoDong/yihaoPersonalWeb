@@ -68,7 +68,6 @@
 		>
 			<p>© {year} Yihao Dong</p>
 			<p>Updated {site.lastUpdated}</p>
-			<p>Set in Fraunces, Instrument Sans &amp; Plex Mono</p>
 		</div>
 	</div>
 </footer>

@@ -16,8 +16,34 @@
 	--dot: #c7cbd4;
 	--accent: #f08a24;
 	--accent-ink: #a8480a;
+	/* Resting / revealed brightness of photos and posters (see .tint). */
+	--img-rest: 1;
+	--img-lit: 1;
 	--header-h: 4rem;
-	color-scheme: light;
+	/* "only light" in both themes: the dark theme below is a dimmed light page
+	   with dark text, so browser-drawn parts (scrollbars, controls) stay light
+	   and Chrome's automatic darkening is told to keep out. */
+	color-scheme: only light;
+}
+
+/* Dark theme: deliberately the light theme turned down a notch, not an
+   inverted page. Same dark ink on a dimmer paper. It exists so that browsers
+   which darken sites by themselves see a site that handles dark already.
+   It always follows the system setting; there is no manual switch. */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--paper: #e2e3e7;
+		--paper-2: #d5d7dc;
+		--ink: #1d1d1f;
+		--ink-2: #3e424d;
+		--ink-3: #565a66;
+		--line: #bfc2ca;
+		--dot: #b2b6c0;
+		--accent: #e87f17;
+		--accent-ink: #933d05;
+		--img-rest: 0.93;
+		--img-lit: 0.93;
+	}
 }
 
 @layer base {
@@ -148,19 +174,20 @@
 	}
 
 	/* Images that rest in greyscale. Hover reveals colour on pointer devices;
-	   the colourOnArrive action adds .is-colour on touch devices. */
+	   the colourOnArrive action adds .is-colour on touch devices. In the dark
+	   theme they are a touch dimmer, so a white poster does not outshine the page. */
 	.tint {
-		filter: grayscale(1);
+		filter: grayscale(1) brightness(var(--img-rest));
 		transition: filter 700ms cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	@media (hover: hover) {
 		.group:hover .tint,
 		.group:focus-visible .tint {
-			filter: grayscale(0);
+			filter: grayscale(0) brightness(var(--img-lit));
 		}
 	}
 	.tint.is-colour {
-		filter: grayscale(0);
+		filter: grayscale(0) brightness(var(--img-lit));
 	}
 
 	/* Press feedback for tappable blocks */

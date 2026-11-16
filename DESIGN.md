@@ -48,21 +48,50 @@ Story arc across the pages:
 **Palette.** Cool paper instead of white, ink instead of gray-900, one orange
 accent taken from the TactDeform electrode dots, one hairline grey. The ground
 started warm cream and was moved to a cool grey-white on review, keeping the
-orange; neutrals shifted cool with it. Light only: a dark theme was built and
-then removed on review.
+orange; neutrals shifted cool with it. A dark theme was added in November 2026
+(see "Dark theme" below).
 Accent text uses a darker burnt orange so it passes WCAG AA on paper; the bright
 orange is reserved for dots, rules and large marks.
 
-| Token | Value |
-|---|---|
-| paper | `#F5F5F7` |
-| paper-2 (raised) | `#E9EBEF` |
-| ink | `#1D1D1F` |
-| ink-2 (secondary) | `#454A56` |
-| ink-3 (muted) | `#646976` |
-| line | `#D3D6DD` |
-| accent (dots, marks) | `#F08A24` |
-| accent-ink (text) | `#A8480A` |
+| Token | Light | Dark |
+|---|---|---|
+| paper | `#F5F5F7` | `#E2E3E7` |
+| paper-2 (raised) | `#E9EBEF` | `#D5D7DC` |
+| ink | `#1D1D1F` | `#1D1D1F` |
+| ink-2 (secondary) | `#454A56` | `#3E424D` |
+| ink-3 (muted) | `#646976` | `#565A66` |
+| line | `#D3D6DD` | `#BFC2CA` |
+| dot (unlit electrode) | `#C7CBD4` | `#B2B6C0` |
+| accent (dots, marks) | `#F08A24` | `#E87F17` |
+| accent-ink (text) | `#A8480A` | `#933D05` |
+
+**Dark theme.** Deliberately *not* an inverted page: it is the light theme
+turned down a notch. Same dark ink, on a paper about 8% dimmer, with the
+neutrals and the orange deepened just enough to keep the same contrast. A
+first, true-dark version (near-black paper, light ink) was built on
+17 November 2026 and rejected by Yihao the same day: the site should look like
+itself at night. The reason a dark theme exists at all is that some browsers
+darken sites automatically and do it badly; shipping our own keeps control.
+Decisions:
+
+- *Always follows the system.* No switch anywhere on the site (a footer
+  Auto / Light / Dark control was tried and removed): the theme is a pure
+  `prefers-color-scheme` media query, so it needs no JavaScript and no storage.
+  The colophon line in the footer was removed at the same time.
+- *Keeping browsers' auto-dark out.* The page declares dark support
+  (`<meta name="color-scheme" content="light dark">` plus a
+  `prefers-color-scheme: dark` stylesheet), and `:root` sets
+  `color-scheme: only light`, which is Chrome's documented opt-out from Auto
+  Dark Theme and keeps scrollbars and form controls light to match the page.
+- *Text tokens darken with the paper*, so every pairing still passes WCAG AA
+  (ink-3 5.4:1, accent-ink 5.6:1 on paper).
+- *Images dim slightly* (93% brightness, `--img-rest` / `--img-lit`) so a
+  white poster does not outshine the dimmer page.
+- *The canvas repaints.* `DotField` reads its colours from the tokens and
+  listens for the system scheme changing (`onThemeChange` in
+  `src/lib/theme.ts`).
+- *Browser chrome matches.* Two `theme-color` metas follow the system.
+- The Open Graph image and the PDF CV stay light: they are seen out of context.
 
 **Type.** Three self-hosted families, chosen for character rather than
 neutrality:
@@ -163,8 +192,11 @@ neutrality:
 ## 5. Engineering notes
 
 - Stack unchanged: SvelteKit 2, Svelte 5 runes, Tailwind 3.4, Vercel adapter.
-- Design tokens are CSS custom properties on `:root` / `.dark`; Tailwind maps
-  them so utilities like `text-ink` and `bg-paper` work.
+- Design tokens are CSS custom properties on `:root`, redefined for dark under
+  `prefers-color-scheme`; Tailwind maps them so
+  utilities like `text-ink` and `bg-paper` work. Opacity modifiers
+  (`bg-paper/85`) compile to `color-mix()` (see `tailwind.config.js`). Never
+  hard-code a hex in a component: use a token so both themes are covered.
 - Fonts self-hosted through `@fontsource*` packages (no Google Fonts request).
 - New data files: `news.ts`, `awards.ts` (awards + service), publications gain
   `teaser`, `award`, `code` fields.
