@@ -16,6 +16,10 @@ export interface NewsItem {
 
 export const news: NewsItem[] = [
 	{
+		date: '2026-11',
+		text: 'I’ve been selected as a <strong>2026 Google PhD Fellow</strong> in Human-Computer Interaction, with support from Google.org. <a href="https://goo.gle/phd-fellows-2026" target="_blank" rel="noopener noreferrer">All recipients</a>.'
+	},
+	{
 		date: '2026-04',
 		text: 'I presented <em>TactDeform</em> at <strong>CHI ’26</strong> in Barcelona, both the paper and the interactive demo. Thank you to everyone who stopped by for a chat.'
 	},

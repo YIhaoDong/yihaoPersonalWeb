@@ -6,6 +6,11 @@ export interface Award {
 
 export const awards: Award[] = [
 	{
+		year: '2026',
+		title: '2026 Google PhD Fellow',
+		detail: 'Human-Computer Interaction. With support from Google.org.'
+	},
+	{
 		year: '2025',
 		title: 'Honorable Mention, CHI 2025',
 		detail: 'For “Juggling Extra Limbs” (Zhou et al.). Top 5% of submissions.'

@@ -19,7 +19,7 @@ export const site = {
 		map: 'https://maps.apple/p/5xitdGQSXAHeCZ'
 	},
 	cv: '/CV_Yihao_Dong.pdf',
-	lastUpdated: 'September 2026',
+	lastUpdated: 'November 2026',
 	profiles: [
 		{ name: 'University of Sydney profile', href: 'https://profiles.sydney.edu.au/yihao.dong' },
 		{ name: 'Google Scholar', href: 'https://scholar.google.com/citations?user=y9KUBZAAAAAJ' },

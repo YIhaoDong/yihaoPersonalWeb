@@ -16,6 +16,7 @@
 		{ year: '2025', title: 'First first-author paper', detail: 'Just Before Touch at Augmented Humans ’25; CHI ’25 Honorable Mention as co-author; Best Early PhD Project at the School showcase.' },
 		{ year: '2025', title: 'Associate Lecturer', detail: 'October. PhD Teaching Fellow, teaching COMP9001 and COMP9123.' },
 		{ year: '2026', title: 'Two papers at CHI ’26', detail: 'TactDeform (first author) and SRL Proxemics, presented in Barcelona.' },
+		{ year: '2026', title: 'Google PhD Fellow', detail: 'Selected for the 2026 Google PhD Fellowship Program in Human-Computer Interaction, with support from Google.org.' },
 		{ year: '2028', title: 'PhD, expected', detail: 'July.' }
 	];
 </script>
@@ -108,10 +109,10 @@
 <section class="border-t border-line" aria-labelledby="awards-title">
 	<div class="wrap section">
 		<SectionHead index="02" label="Recognition & service" />
-		<h2 id="awards-title" class="sr-only">Awards and service</h2>
+		<h2 id="awards-title" class="sr-only">Recognition and service</h2>
 		<div class="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-16">
 			<div use:reveal>
-				<h3 class="eyebrow">Awards</h3>
+				<h3 class="eyebrow">Recognition</h3>
 				<ul class="mt-4 divide-y divide-line border-y border-line">
 					{#each awards as a}
 						<li class="grid grid-cols-[5rem_1fr] gap-4 py-4">
