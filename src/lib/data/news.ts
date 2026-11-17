@@ -37,7 +37,7 @@ export const news: NewsItem[] = [
 	},
 	{
 		date: '2025-04',
-		text: 'Our paper <em>Juggling Extra Limbs</em> received an <strong>Honorable Mention</strong> at CHI ’25 in Yokohama, placing it in the top 5% of submissions.'
+		text: 'Congratulations to Hongyu Zhou: her paper <em>Juggling Extra Limbs</em> received an <strong>Honorable Mention</strong> at CHI ’25 in Yokohama, placing it in the top 5% of submissions. I am glad to be a co-author.'
 	},
 	{
 		date: '2025-03',

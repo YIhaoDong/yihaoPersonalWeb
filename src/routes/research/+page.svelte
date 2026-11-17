@@ -11,7 +11,6 @@
 
 	const tactdeform = publications.find((p) => p.project === 'tactdeform')!;
 	const jbt = publications.find((p) => p.project === 'just-before-touch')!;
-	const collaborations = publications.filter((p) => !p.isFirstAuthor);
 
 	const objectives = [
 		'Design haptic metaphors that communicate spatial information intuitively.',
@@ -184,40 +183,10 @@
 	</div>
 </section>
 
-<!-- Collaborations -->
-<section class="border-t border-line" aria-labelledby="collab-title">
-	<div class="wrap section">
-		<SectionHead index="05" label="With collaborators" />
-		<div class="split mt-10">
-			<div>
-				<h2 id="collab-title" class="display text-[1.75rem] leading-tight text-ink">Extra limbs and shared bodies</h2>
-				<p class="mt-4 text-[0.95rem] leading-relaxed text-ink-2">
-					A second strand of work in the lab, led by Hongyu Zhou, asks how people control and share
-					supernumerary robotic limbs in VR. I contribute to study design and analysis.
-				</p>
-			</div>
-			<ul class="divide-y divide-line border-y border-line">
-				{#each collaborations as p}
-					<li class="grid gap-2 py-5 sm:grid-cols-[6rem_1fr] sm:gap-6">
-						<p class="font-mono text-xs uppercase tracking-[0.14em] text-ink-3">
-							{p.venueShort}
-							{#if p.award}<span class="mt-1 block text-accent-ink">{p.award}</span>{/if}
-						</p>
-						<div>
-							<h3 class="text-[1.05rem] leading-snug text-ink"><a href="/publications#pub-{p.id}" class="link">{p.title}</a></h3>
-							<p class="mt-1.5 text-[0.92rem] text-ink-2">{p.teaser}</p>
-						</div>
-					</li>
-				{/each}
-			</ul>
-		</div>
-	</div>
-</section>
-
 <!-- Interests -->
 <section class="border-t border-line" aria-labelledby="interests-title">
 	<div class="wrap section">
-		<SectionHead index="06" label="Interests" />
+		<SectionHead index="05" label="Interests" />
 		<h2 id="interests-title" class="sr-only">Research interests</h2>
 		<p class="display mt-8 max-w-5xl text-[clamp(1.5rem,3.4vw,2.6rem)] leading-tight text-ink">
 			{#each researchInterests as ri, i}
